@@ -16,7 +16,7 @@ public class ClassroomAvailabilityBean implements Serializable {
     }
 
     public void setTime(String time) throws SyntaxBeanException {
-
+        System.out.println("asdasdasdsa");
         timeSyntaxCheck(time);
         this.time = time;
     }
