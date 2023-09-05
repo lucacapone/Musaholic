@@ -71,7 +71,7 @@ public class LessonDAOJDBC implements LessonDAO{
                 se.printStackTrace();
             }
         }
-
+System.out.println("aaaaa");
         return listOfLesson;
     }
 
