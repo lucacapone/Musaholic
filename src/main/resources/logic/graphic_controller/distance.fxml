@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.image.Image?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.graphic_controller.DistanceController">
+   <children>
+      <Label id="Home" fx:id="Home" layoutX="135.0" layoutY="35.0" onMouseClicked="#goHome" text="Home" textFill="#f69002" />
+      <Label id="ScheduledLessons" fx:id="ScheduledLessons" layoutX="200.0" layoutY="35.0" text="Scheduled Lessons" />
+      <Label id="Contacts" fx:id="Contacts" layoutX="320.0" layoutY="35.0" text="Contacts" />
+      <Label id="Help" fx:id="Help" layoutX="392.0" layoutY="35.0" text="Help" />
+      <ImageView fitHeight="84.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/logo.png" />
+         </image></ImageView>
+      <Label id="Profile" fx:id="Profile" layoutX="524.0" layoutY="35.0" text="Profile" />
+      <Label layoutX="52.0" layoutY="131.0" text="Schedule Lesson / Face to face mode:" textFill="#f09205" />
+      <Label layoutX="53.0" layoutY="171.0" text="Select the range of payment" />
+      <Label layoutX="366.0" layoutY="171.0" text="Select the range of distance" />
+      <ChoiceBox id="choiceBoxFaceToFacePayment" fx:id="choiceBoxFaceToFacePayment" layoutX="53.0" layoutY="218.0" prefWidth="150.0" />
+      <Button id="send2FaceToFaceButton" fx:id="send2FaceToFaceButton" layoutX="268.0" layoutY="323.0" mnemonicParsing="false" onAction="#goFaceToFaceSearchTeacher" style="-fx-background-color: rgb(0,123,167)" text="Send" textFill="#fdfbfb" />
+      <Label layoutX="53.0" layoutY="269.0" text="Status:" />
+      <Label layoutX="366.0" layoutY="269.0" text="Status:" />
+      <Label id="statusFaceToFacePayment" fx:id="statusFaceToFacePayment" layoutX="92.0" layoutY="269.0" text="not verified" />
+      <Label id="statusDistance" fx:id="statusDistance" layoutX="404.0" layoutY="269.0" text="not verified" />
+      <ChoiceBox id="choiceBoxDistance" fx:id="choiceBoxDistance" layoutX="366.0" layoutY="218.0" prefWidth="150.0" />
+      <Label layoutX="524.0" layoutY="222.0" text="KM" />
+      <Label layoutX="212.0" layoutY="222.0" prefHeight="17.0" prefWidth="10.0" text="€" />
+   </children>
+</Pane>
