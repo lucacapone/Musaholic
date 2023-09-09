@@ -5,10 +5,7 @@ import logic.bean.MusicalInstrumentBean;
 import logic.bean.PriceBean;
 import logic.bean.TimeBean;
 import logic.model.Lesson;
-
-import java.sql.Time;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 public class BookingLessonController {
