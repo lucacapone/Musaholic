@@ -70,11 +70,8 @@ public class LessonDetailsController {
     private Button sendDetailsButton; // Value injected by FXMLLoader
 
 
-
     private String[] musicalInstrumentList = {"guitar", "piano", "sax"};
-
     private String[] priceList = {"10", "15", "20", "25", "30", "40", "50"};
-
     private String[] timeList = {"7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
 
