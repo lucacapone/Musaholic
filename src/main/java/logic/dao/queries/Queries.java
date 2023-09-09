@@ -20,8 +20,8 @@ public class Queries {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet selectTeacherLesson(Statement stmt, LocalDate _date, String _musicalInstrument, int _price, int _time) throws SQLException  {
-        String sql = "SELECT DISTINCT * FROM teacherLesson WHERE teacherLesson.date = _date AND teacherLesson.musicalInstrument = _musicalInstrument AND teacherLesson.price = _price AND teacherLesson.time = _time ;";
+    public static ResultSet selectTeacherLesson(Statement stmt, String date, String musicalInstrument, int price, int time) throws SQLException  {
+        String sql = String.format("SELECT DISTINCT * FROM teacherLesson WHERE teacherLesson.date = '%s' AND teacherLesson.musicalInstrument = '%s' AND teacherLesson.price = %s AND teacherLesson.time = %s",date,musicalInstrument,price,time);
         return stmt.executeQuery(sql);
     }
 

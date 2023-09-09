@@ -68,4 +68,7 @@ public class TeacherLesson {
     public void setTime(int time) {
         this.time = time;
     }
+
+    public String getAll(){ return idTeacher+"-"+name+"-"+date.toString()+"-"+musicalInstrument+"-"+String.valueOf(price)+"-"+String.valueOf(time);}
+
 }

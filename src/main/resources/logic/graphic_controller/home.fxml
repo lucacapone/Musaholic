@@ -6,19 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.graphic_controller.HomeController" style="-fx-background-color: white">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.graphic_controller.HomeController">
    <children>
       <Label id="Home" fx:id="Home" layoutX="135.0" layoutY="35.0" onMouseClicked="#goHome" text="Home" textFill="#f69002" />
-      <Label id="ScheduledLessons" fx:id="ScheduledLessons" layoutX="200.0" onMouseClicked="#goScheduledLessons" layoutY="35.0" text="Scheduled Lessons" />
+      <Label id="ScheduledLessons" fx:id="ScheduledLessons" layoutX="200.0" layoutY="35.0" onMouseClicked="#goScheduledLessons" text="Scheduled Lessons" />
       <Label id="Contacts" fx:id="Contacts" layoutX="320.0" layoutY="35.0" text="Contacts" />
       <Label id="Help" fx:id="Help" layoutX="392.0" layoutY="35.0" text="Help" />
       <ImageView fitHeight="84.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/logo.png" />
          </image></ImageView>
-      <Button id="ScheduleLessonButton" fx:id="ScheduleLessonButton" layoutX="53.0" layoutY="203.0" mnemonicParsing="false" onAction="#StartScheduleLesson" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Schedule Lesson" textFill="#fdfbfb" />
-      <Button id="MusicalInstrumentsButton" fx:id="MusicalInstrumentsButton" layoutX="232.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" text="Musical Instruments" style="-fx-background-color: rgb(0,123,167)" textFill="#fdfbfb"/>
-      <Button id="NewsButton" fx:id="NewsButton" layoutX="404.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" text="News" style="-fx-background-color: rgb(0,123,167)" textFill="#fdfbfb" />
+      <Button id="BookLessonButton" fx:id="BookLessonButton" layoutX="53.0" layoutY="203.0" mnemonicParsing="false" onAction="#StartBookLesson" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Book Lesson" textFill="#fdfbfb" />
+      <Button id="MusicalInstrumentsButton" fx:id="MusicalInstrumentsButton" layoutX="232.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Musical Instruments" textFill="#fdfbfb" />
+      <Button id="NewsButton" fx:id="NewsButton" layoutX="404.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="News" textFill="#fdfbfb" />
       <Label layoutX="64.0" layoutY="140.0" text="choose what to do:" />
       <Label layoutX="62.0" layoutY="157.0" text="(click on it)" />
       <Label id="Profile" fx:id="Profile" layoutX="524.0" layoutY="35.0" text="Profile" />

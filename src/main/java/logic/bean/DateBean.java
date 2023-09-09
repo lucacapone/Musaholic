@@ -21,7 +21,9 @@ public class DateBean implements Serializable {
 
     private void syntaxCheck(String date) throws SyntaxBeanException {
         try {
+            if(date == "null"){    throw new SyntaxBeanException("date error: input null") ;}
             LocalDate d = LocalDate.parse(date);
+
         }
         catch (DateTimeException exception ) {
             throw new SyntaxBeanException("date error: input invalid") ;

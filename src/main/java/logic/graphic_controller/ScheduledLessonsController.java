@@ -83,7 +83,6 @@ public class ScheduledLessonsController {
     void goScheduledLessons(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("scheduledLessons.fxml")));
 
-        //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));
 
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -127,7 +127,7 @@ public class LessonDAOCSV implements LessonDAO {
 
     }
 
-    public static void main(String[] args) throws Exception {
+    /*public static void main(String[] args) throws Exception {
         LocalDate date = LocalDate.of(2020, 1, 8);
         Lesson l1 = new Lesson("01",date,"ccc",4,"11","33","44",6);
         LessonDAOCSV lcsv= new LessonDAOCSV();
@@ -139,6 +139,9 @@ public class LessonDAOCSV implements LessonDAO {
         }
 
     }
+
+     */
+
 
 
 }

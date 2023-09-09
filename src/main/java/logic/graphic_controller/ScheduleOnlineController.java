@@ -94,7 +94,7 @@ public class ScheduleOnlineController {
         String schedule = statusOnlineSchedule.getText();
         String musicalInstrument = statusOnlineMusicalInstrument.getText();
         if (schedule == "verified" && musicalInstrument == "verified" ) {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("payment.fxml")));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("confirmation.fxml")));
 
             //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));
 

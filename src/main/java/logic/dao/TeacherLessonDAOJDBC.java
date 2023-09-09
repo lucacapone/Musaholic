@@ -16,7 +16,7 @@ import java.util.List;
 public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
 
     @Override
-    public List<TeacherLesson> retrieveTeacherLesson(LocalDate date, String musicalInstrument, int price, int time) throws Exception {
+    public List<TeacherLesson> retrieveTeacherLesson(String date, String musicalInstrument, int price, int time) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = DbConnection.getConnection();
@@ -42,10 +42,10 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
 
                 // lettura delle colonne "by is student"
                 String idTeacher = rs.getString("idTeacher");
-                String teacher = rs.getString("teacher");
+                String name = rs.getString("name");
 
 
-               TeacherLesson l1 = new TeacherLesson(idTeacher,teacher,date, musicalInstrument, price,time);
+               TeacherLesson l1 = new TeacherLesson(idTeacher,name,LocalDate.parse(date), musicalInstrument, price,time);
 
                 listOfTeacherLesson.add(l1);
 
@@ -72,14 +72,15 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
         return listOfTeacherLesson;
     }
 
+/*
+    public static void main(String[] args) throws Exception {
 
-   /* public static void main(String[] args) throws Exception {
+        LocalDate date = LocalDate.of(2020, 1, 8);
+        TeacherLesson l1 = new TeacherLesson("011","giovanna rossi",date,"sax",25,11);
+        TeacherLessonDAOJDBC lcsv = new TeacherLessonDAOJDBC();
 
-        Lesson l1 = new Lesson(114,"online",LocalDate.now(),"sax","30","40","Silvia Rossi",0);
-        LessonDAOJDBC lcsv = new LessonDAOJDBC();
-
-        List<Lesson> lessonList;
-        lessonList = lcsv.retrieveByNumberLesson(11);
+        List<TeacherLesson> lessonList;
+        lessonList = lcsv.retrieveTeacherLesson(date.toString(),"sax",25,11);
 
         for(int i=0;i<lessonList.size();i++){
            System.out.println(lessonList.get(i).getAll());
@@ -87,6 +88,10 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
 
     }
 
-    */
+ */
+
+
+
+
 }
 

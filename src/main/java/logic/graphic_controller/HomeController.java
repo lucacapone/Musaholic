@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import logic.controller.BookingLessonController;
 
 public class HomeController {
 
@@ -44,24 +44,26 @@ public class HomeController {
     private Label Profile; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduleLessonButton"
-    private Button ScheduleLessonButton; // Value injected by FXMLLoader
+    private Button BookLessonButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
     private Label ScheduledLessons; // Value injected by FXMLLoader
 
 
     @FXML
-    void StartScheduleLesson(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mode.fxml")));
+    void StartBookLesson(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
 
-        //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));
-
+        BookingLessonController  c = new BookingLessonController();
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
         stage.setTitle("Forza Roma");
-
+        if (loader.getController() instanceof LessonDetailsController){
+            LessonDetailsController nextGraphicController=loader.getController();
+            nextGraphicController.setController(c);
+        }
         stage.show();
 
     }
@@ -70,7 +72,6 @@ public class HomeController {
     void goHome(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
-        //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));
 
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -85,7 +86,6 @@ public class HomeController {
     void goScheduledLessons(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("scheduledLessons.fxml")));
 
-        //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));
 
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -105,7 +105,7 @@ public class HomeController {
         assert MusicalInstrumentsButton != null : "fx:id=\"MusicalInstrumentsButton\" was not injected: check your FXML file 'Untitled'.";
         assert NewsButton != null : "fx:id=\"NewsButton\" was not injected: check your FXML file 'Untitled'.";
         assert Profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'Untitled'.";
-        assert ScheduleLessonButton != null : "fx:id=\"ScheduleLessonButton\" was not injected: check your FXML file 'Untitled'.";
+        assert BookLessonButton != null : "fx:id=\"BookLessonButton\" was not injected: check your FXML file 'Untitled'.";
         assert ScheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'Untitled'.";
 
     }
