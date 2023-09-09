@@ -23,7 +23,7 @@ public class DateBean implements Serializable {
     private void syntaxCheck(String date) throws SyntaxBeanException {
         try {
             if(Objects.equals(date, "null")){    throw new SyntaxBeanException("date error: input null") ;}
-            LocalDate d = LocalDate.parse(date);
+           // LocalDate d = LocalDate.parse(date);
 
         }
         catch (DateTimeException exception ) {
