@@ -96,7 +96,7 @@ public class DistanceController {
     void goFaceToFaceSearchTeacher(ActionEvent event) throws IOException {
         String distance = statusDistance.getText();
         String payment = statusFaceToFacePayment.getText();
-        if (payment == "verified" && distance == "verified") {
+        if (Objects.equals(payment, "verified") && Objects.equals(distance, "verified")) {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
             //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));

@@ -93,7 +93,7 @@ public class ScheduleOnlineController {
     void goPayment(ActionEvent event) throws IOException {
         String schedule = statusOnlineSchedule.getText();
         String musicalInstrument = statusOnlineMusicalInstrument.getText();
-        if (schedule == "verified" && musicalInstrument == "verified" ) {
+        if (Objects.equals(schedule, "verified") && Objects.equals(musicalInstrument, "verified")) {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("confirmation.fxml")));
 
             //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));

@@ -5,6 +5,7 @@ import logic.exception.SyntaxBeanException;
 import java.io.Serializable;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class DateBean implements Serializable {
 
@@ -21,7 +22,7 @@ public class DateBean implements Serializable {
 
     private void syntaxCheck(String date) throws SyntaxBeanException {
         try {
-            if(date == "null"){    throw new SyntaxBeanException("date error: input null") ;}
+            if(Objects.equals(date, "null")){    throw new SyntaxBeanException("date error: input null") ;}
             LocalDate d = LocalDate.parse(date);
 
         }
