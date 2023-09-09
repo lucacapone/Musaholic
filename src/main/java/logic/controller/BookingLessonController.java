@@ -9,6 +9,7 @@ import logic.model.Lesson;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 public class BookingLessonController {
     private Lesson lesson;
@@ -21,9 +22,6 @@ public class BookingLessonController {
         this.setTime(t);
         this.setMusicalInstrument(m);
 
-        
-
-
 
 
     }
@@ -32,10 +30,7 @@ public class BookingLessonController {
         String musicalInstrument = musicalInstrumentBean.getMusicalInstrument();
         String price = priceBean.getPrice();
         String time = timeBean.getTime();
-        if (date == "" || musicalInstrument == "" || price == "" || time == ""){
-            return false ;
-        }
-        return true;
+        return !Objects.equals(date, "") && !Objects.equals(musicalInstrument, "") && !Objects.equals(price, "") && !Objects.equals(time, "");
     }
 
     private void setDate(DateBean dateBean) {
