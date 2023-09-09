@@ -4,7 +4,6 @@ import logic.exception.SyntaxBeanException;
 
 import java.io.Serializable;
 import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class DateBean implements Serializable {
