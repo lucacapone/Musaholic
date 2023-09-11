@@ -16,7 +16,7 @@ import java.util.List;
 public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
 
     @Override
-    public List<TeacherLesson> retrieveTeacherLesson(String date, String musicalInstrument, int price, int time) throws Exception {
+    public List<TeacherLesson> retrieveTeacherLesson(String date, String musicalInstrument, int price, int time) throws SQLException, DAOException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = DbConnection.getConnection();
@@ -85,9 +85,10 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
         for(int i=0;i<lessonList.size();i++){
            System.out.println(lessonList.get(i).getAll());
         }
-
     }
+
  */
+
 
 
 

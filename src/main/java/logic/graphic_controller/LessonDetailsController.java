@@ -17,10 +17,12 @@ import logic.bean.MusicalInstrumentBean;
 import logic.bean.PriceBean;
 import logic.bean.TimeBean;
 import logic.controller.BookingLessonController;
+import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -126,13 +128,25 @@ public class LessonDetailsController {
         }
 
         if (controller.checkLessonDetails(dateBean,musicalInstrumentBean,priceBean,timeBean)) {
-            controller.setBooking(dateBean,musicalInstrumentBean,priceBean,timeBean);
+            try {
+                controller.setBooking(dateBean, musicalInstrumentBean, priceBean, timeBean);
+            } catch (SyntaxBeanException ex) {
+                //gestione grafica  errore di sintassi input
+            } catch (DAOException ex) {
+                //gestione grafica del caso di lezione non trovata
+            } catch (SQLException ex) {
+            //gestione grafica del caso di errore nel db connessione
+        }
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, 600, 400);
             stage.setScene(scene);
             stage.setTitle("Forza Roma");
+            if (loader.getController() instanceof LessonController){
+                LessonController nextGraphicController=loader.getController();
+                nextGraphicController.setController(controller);
+            }
 
             stage.show();
         }

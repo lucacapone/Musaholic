@@ -1,23 +1,72 @@
 package logic.controller;
 
-import logic.bean.DateBean;
-import logic.bean.MusicalInstrumentBean;
-import logic.bean.PriceBean;
-import logic.bean.TimeBean;
+import logic.bean.*;
+import logic.boundary.ClassroomManageSystem;
+import logic.dao.TeacherLessonDAOJDBC;
+import logic.exception.DAOException;
+import logic.exception.SyntaxBeanException;
+import logic.model.FreeClassroom;
 import logic.model.Lesson;
+import logic.model.TeacherLesson;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class BookingLessonController {
-    private Lesson lesson;
+    private  Lesson lesson; //L'unica vera prenotazione che alla fine salverò
+
+    public FreeClassroom getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(FreeClassroom classroom) {
+        this.classroom = classroom;
+    }
+
+    public List<TeacherLesson> getLessonList() {
+        return lessonList;
+    }
+
+    public void setLessonList(List<TeacherLesson> lessonList) {
+        this.lessonList = lessonList;
+    }
+
+    private  FreeClassroom classroom;
+    private List<TeacherLesson> lessonList;
     public BookingLessonController(){
         this.lesson = new Lesson("",LocalDate.now(),"",-1,"","","",-1);
     }
-    public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t){
+    public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException,DAOException {
         this.setDate(d);
         this.setPrice(p);
         this.setTime(t);
         this.setMusicalInstrument(m);
+
+        // Classroom Manage System : get free classroom
+        ClassroomAvailabilityBean classroomAvailabilityBean = new ClassroomAvailabilityBean();
+            classroomAvailabilityBean.setDate(lesson.getDate().toString());
+            classroomAvailabilityBean.setTime(Integer.toString(lesson.getTime()));
+
+        ClassroomManageSystem classroomManageSystem = new ClassroomManageSystem();
+        FreeClassroomBean freeClassroomBean = classroomManageSystem.findFreeClassroom(classroomAvailabilityBean);
+        this.classroom.setClassroom(freeClassroomBean.getClassroom());
+
+        // salvare in lesson il campo classroom
+        this.lesson.setClassroom(this.classroom.getClassroom()) ;
+
+        // By DAO teacher : retrieveTeacherLesson
+        String date = lesson.getDate().toString();
+        String musicalInstrument = lesson.getMusicalInstrument();
+        int price = lesson.getPrice();
+        int time = lesson.getTime();
+        TeacherLessonDAOJDBC teacherLessonDAOJDBC = new TeacherLessonDAOJDBC();
+        this.lessonList = teacherLessonDAOJDBC.retrieveTeacherLesson(date,musicalInstrument,price,time);
+
+
+
+
 
 
 
@@ -38,7 +87,6 @@ public class BookingLessonController {
     private void setMusicalInstrument(MusicalInstrumentBean musicalInstrumentBean) {
         this.lesson.setMusicalInstrument(musicalInstrumentBean.getMusicalInstrument());
     }
-
     private void setPrice(PriceBean priceBean) {
         int price = Integer.parseInt(priceBean.getPrice());
         this.lesson.setPrice(price);
