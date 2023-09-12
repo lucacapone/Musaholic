@@ -18,7 +18,7 @@ public class LessonDetailsCLI {
     public LessonDetailsCLI(BookingLessonController controller) {this.controller=controller;
     }
 
-    private static final String syntaxError = "error syntax!\n";
+    private static final String SYNTAX_ERROR = "error syntax!\n";
 
     public void start() {
         System.out.println("Book Lesson / Lesson Details:\n1)Insert musical instrument");
@@ -32,7 +32,7 @@ public class LessonDetailsCLI {
             musicalInstrumentBean.setMusicalInstrument(scanner.nextLine());
         }
         catch (SyntaxBeanException exception){
-            System.out.println(syntaxError);
+            System.out.println(SYNTAX_ERROR);
             start();
         }
         System.out.println("2)Insert date: format(YYYY-MM-DD)");
@@ -40,7 +40,7 @@ public class LessonDetailsCLI {
             dateBean.setDate(scanner.nextLine());
         }
         catch (SyntaxBeanException exception){
-            System.out.println(syntaxError);
+            System.out.println(SYNTAX_ERROR);
             start();
 
         }
@@ -49,7 +49,7 @@ public class LessonDetailsCLI {
             priceBean.setPrice(scanner.nextLine());
         }
         catch (SyntaxBeanException exception){
-            System.out.println(syntaxError);
+            System.out.println(SYNTAX_ERROR);
             start();
 
         }
@@ -58,7 +58,7 @@ public class LessonDetailsCLI {
             timeBean.setTime(scanner.nextLine());
         }
         catch (SyntaxBeanException exception){
-            System.out.println(syntaxError);
+            System.out.println(SYNTAX_ERROR);
             start();
         }
         if (controller.checkLessonDetails(dateBean,musicalInstrumentBean,priceBean,timeBean)) {
