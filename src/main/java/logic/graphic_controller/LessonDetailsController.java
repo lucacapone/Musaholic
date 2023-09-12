@@ -137,6 +137,7 @@ public class LessonDetailsController {
             } catch (SQLException ex) {
             //gestione grafica del caso di errore nel db connessione
         }
+
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -146,6 +147,7 @@ public class LessonDetailsController {
             if (loader.getController() instanceof LessonController){
                 LessonController nextGraphicController=loader.getController();
                 nextGraphicController.setController(controller);
+                nextGraphicController.setSatus();
             }
 
             stage.show();

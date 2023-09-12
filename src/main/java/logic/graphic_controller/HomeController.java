@@ -54,7 +54,7 @@ public class HomeController {
     void StartBookLesson(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
 
-        BookingLessonController  c = new BookingLessonController();
+        BookingLessonController  controller = new BookingLessonController();
         Parent root = loader.load();
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
@@ -62,7 +62,7 @@ public class HomeController {
         stage.setTitle("Forza Roma");
         if (loader.getController() instanceof LessonDetailsController){
             LessonDetailsController nextGraphicController=loader.getController();
-            nextGraphicController.setController(c);
+            nextGraphicController.setController(controller);
         }
         stage.show();
 

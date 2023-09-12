@@ -1,7 +1,9 @@
 package logic.controller;
 
+
 import logic.bean.*;
 import logic.boundary.ClassroomManageSystem;
+import logic.dao.LessonDAOJDBC;
 import logic.dao.TeacherLessonDAOJDBC;
 import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
@@ -11,11 +13,12 @@ import logic.model.TeacherLesson;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class BookingLessonController {
-    private  Lesson lesson; //L'unica vera prenotazione che alla fine salverò
+    private Lesson lesson; //L'unica vera prenotazione che alla fine salverò
+    private  FreeClassroom classroom;
+    private List<TeacherLesson> lessonList;
 
     public FreeClassroom getClassroom() {
         return classroom;
@@ -33,11 +36,13 @@ public class BookingLessonController {
         this.lessonList = lessonList;
     }
 
-    private  FreeClassroom classroom;
-    private List<TeacherLesson> lessonList;
-    public BookingLessonController(){
+    public BookingLessonController() {
         this.lesson = new Lesson("",LocalDate.now(),"",-1,"","","",-1);
+        this.classroom = new FreeClassroom("");
+        this.lessonList = new ArrayList<>();
     }
+
+
     public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException,DAOException {
         this.setDate(d);
         this.setPrice(p);
@@ -45,32 +50,33 @@ public class BookingLessonController {
         this.setMusicalInstrument(m);
 
         // Classroom Manage System : get free classroom
-        ClassroomAvailabilityBean classroomAvailabilityBean = new ClassroomAvailabilityBean();
-            classroomAvailabilityBean.setDate(lesson.getDate().toString());
-            classroomAvailabilityBean.setTime(Integer.toString(lesson.getTime()));
-
-        ClassroomManageSystem classroomManageSystem = new ClassroomManageSystem();
-        FreeClassroomBean freeClassroomBean = classroomManageSystem.findFreeClassroom(classroomAvailabilityBean);
-        this.classroom.setClassroom(freeClassroomBean.getClassroom());
-
-        // salvare in lesson il campo classroom
-        this.lesson.setClassroom(this.classroom.getClassroom()) ;
+        FindFreeClassroom();
 
         // By DAO teacher : retrieveTeacherLesson
+        FindTeacherLessons();
+
+    }
+
+    private void FindTeacherLessons() throws DAOException, SQLException {
         String date = lesson.getDate().toString();
         String musicalInstrument = lesson.getMusicalInstrument();
         int price = lesson.getPrice();
         int time = lesson.getTime();
         TeacherLessonDAOJDBC teacherLessonDAOJDBC = new TeacherLessonDAOJDBC();
         this.lessonList = teacherLessonDAOJDBC.retrieveTeacherLesson(date,musicalInstrument,price,time);
-
-
-
-
-
-
-
     }
+
+    private void FindFreeClassroom() throws SyntaxBeanException {
+        ClassroomAvailabilityBean classroomAvailabilityBean = new ClassroomAvailabilityBean();
+        classroomAvailabilityBean.setDate(lesson.getDate().toString());
+        classroomAvailabilityBean.setTime(Integer.toString(lesson.getTime()));
+
+        ClassroomManageSystem classroomManageSystem = new ClassroomManageSystem();
+        FreeClassroomBean freeClassroomBean = classroomManageSystem.findFreeClassroom(classroomAvailabilityBean);
+        this.classroom.setClassroom(freeClassroomBean.getClassroom());
+        this.lesson.setClassroom(freeClassroomBean.getClassroom());
+    }
+
     public boolean checkLessonDetails(DateBean dateBean, MusicalInstrumentBean musicalInstrumentBean, PriceBean priceBean, TimeBean timeBean){
         String date = dateBean.getDate();
         String musicalInstrument = musicalInstrumentBean.getMusicalInstrument();
@@ -95,5 +101,16 @@ public class BookingLessonController {
     private void setTime(TimeBean timeBean) {
         int time = Integer.parseInt(timeBean.getTime());
         this.lesson.setTime(time);
+    }
+
+    public  void setTeacherDetails(String id, String name) {
+        this.lesson.setIdTeacher(id);
+        this.lesson.setTeacher(name);
+        System.out.println(lesson.getAll());
+    }
+    public void saveLesson() throws Exception {
+        //salvare nel db la lezione
+        LessonDAOJDBC lessonDAOJDBC= new LessonDAOJDBC();
+        lessonDAOJDBC.saveLesson(lesson);
     }
 }

@@ -70,5 +70,6 @@ public class TeacherLesson {
     }
 
     public String getAll(){ return idTeacher+"-"+name+"-"+date.toString()+"-"+musicalInstrument+"-"+String.valueOf(price)+"-"+String.valueOf(time);}
+    public String getLesson(){ return idTeacher+"   teacher:  "+name+"     price:   "+String.valueOf(price)+"€";}
 
 }

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import logic.graphic_controller.CLI.HomeCLI;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -13,9 +14,6 @@ public class StartController extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
-
-        //loader.setControllerFactory(aClass -> new DettaglioAnnuncioController (cp));
-
         Parent root = loader.load();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
@@ -26,7 +24,15 @@ public class StartController extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+
+        boolean isCLI = true;
+
+        //meccanismo di scelta
+
+        if (isCLI) {
+            HomeCLI homeCLI = new HomeCLI();
+            homeCLI.start();
+        } else launch(args);
     }
 }
 
