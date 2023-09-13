@@ -17,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.controller.BookingLessonController;
 
+import static logic.graphic_controller.StartController.MUSAHOLIC;
+
 public class HomeController {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -52,19 +54,18 @@ public class HomeController {
 
     @FXML
     void StartBookLesson(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
-
         BookingLessonController  controller = new BookingLessonController();
-        Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.setTitle("Forza Roma");
-        if (loader.getController() instanceof LessonDetailsController){
-            LessonDetailsController nextGraphicController=loader.getController();
-            nextGraphicController.setController(controller);
-        }
-        stage.show();
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 600, 400);
+            stage.setScene(scene);
+            stage.setTitle(MUSAHOLIC);
+            if (loader.getController() instanceof LessonDetailsController) {
+                LessonDetailsController nextGraphicController = loader.getController();
+                nextGraphicController.setController(controller);
+            }
+            stage.show();
 
     }
 
@@ -77,7 +78,7 @@ public class HomeController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 

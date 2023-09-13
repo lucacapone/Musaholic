@@ -3,7 +3,7 @@ package logic.model;
 //Singleton
 public class Session {
 
-    private int id;
+    private String id;
     private String name;
     private String surname;
     private String email;
@@ -11,7 +11,7 @@ public class Session {
     private static Session instance;
 
     private Session() {
-        this.id = 0;
+        this.id = "";
         this.name = "";
         this.surname = "";
         this.email = "";
@@ -26,11 +26,11 @@ public class Session {
         return instance;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

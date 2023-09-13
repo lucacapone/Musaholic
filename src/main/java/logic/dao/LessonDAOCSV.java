@@ -1,10 +1,13 @@
 package logic.dao;
 
 
+import com.opencsv.exceptions.CsvValidationException;
 import logic.model.Lesson;
 import logic.exception.DAOException;
 
 import java.io.*;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class LessonDAOCSV implements LessonDAO {
     }
 
     @Override
-    public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws Exception {
+    public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws CsvValidationException, IOException, DAOException {
 
 
         List<Lesson> lst = new ArrayList<Lesson>();
@@ -46,7 +49,7 @@ public class LessonDAOCSV implements LessonDAO {
         return lst;
     }
 
-    private static synchronized List<Lesson> retrieveLessonByIdStudent(File fd, String idStudent) throws Exception {
+    private static synchronized List<Lesson> retrieveLessonByIdStudent(File fd, String idStudent) throws IOException, CsvValidationException, DAOException {
         // create csvReader object passing file reader as a parameter
         CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
         String[] record;
@@ -85,16 +88,9 @@ public class LessonDAOCSV implements LessonDAO {
     }
 
     @Override
-    public void saveLesson(Lesson instance) throws Exception {
-        saveLesson(this.fd, instance);
-
-    }
-
-
-    public static synchronized void saveLesson(File fd, Lesson instance) throws Exception {
-
+  public  synchronized void saveLesson(Lesson instance) throws IOException {
         // create csvWriter object passing file reader as a parameter
-        CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(fd, true)));
+        CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fd, true)));
 
 
         String[] record = new String[8];
@@ -127,7 +123,8 @@ public class LessonDAOCSV implements LessonDAO {
 
     }
 
-    /*public static void main(String[] args) throws Exception {
+    /*
+    public static void main(String[] args) throws Exception {
         LocalDate date = LocalDate.of(2020, 1, 8);
         Lesson l1 = new Lesson("01",date,"ccc",4,"11","33","44",6);
         LessonDAOCSV lcsv= new LessonDAOCSV();
@@ -141,7 +138,5 @@ public class LessonDAOCSV implements LessonDAO {
     }
 
      */
-
-
 
 }

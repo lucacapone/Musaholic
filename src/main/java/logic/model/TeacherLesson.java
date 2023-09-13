@@ -69,7 +69,7 @@ public class TeacherLesson {
         this.time = time;
     }
 
-    public String getAll(){ return idTeacher+"-"+name+"-"+date.toString()+"-"+musicalInstrument+"-"+String.valueOf(price)+"-"+String.valueOf(time);}
-    public String getLesson(){ return idTeacher+"   teacher:  "+name+"     price:   "+String.valueOf(price)+"€";}
+    public String getAll(){ return idTeacher+"-"+name+"-"+date.toString()+"-"+musicalInstrument+"-"+price+"-"+time;}
+    public String getLesson(){ return idTeacher+"   teacher:  "+name+"     price:   "+price+"€";}
 
 }

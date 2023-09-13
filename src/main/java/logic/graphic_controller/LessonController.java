@@ -19,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.controller.BookingLessonController;
 
+import static logic.graphic_controller.StartController.MUSAHOLIC;
+
 public class LessonController {
 
     BookingLessonController controller;
@@ -66,7 +68,7 @@ public class LessonController {
     private Label profile; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
-    private Label ScheduledLessons; // Value injected by FXMLLoader
+    private Label scheduledLessons; // Value injected by FXMLLoader
 
     @FXML // fx:id="backButtton"
     private Button backButtton; // Value injected by FXMLLoader
@@ -89,7 +91,7 @@ public class LessonController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
         if (loader.getController() instanceof ConfirmationController){
             ConfirmationController nextGraphicController=loader.getController();
             nextGraphicController.setController(controller);
@@ -111,7 +113,7 @@ public class LessonController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -124,7 +126,7 @@ public class LessonController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -139,7 +141,7 @@ public class LessonController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
         if (loader.getController() instanceof LessonDetailsController){
             LessonDetailsController nextGraphicController=loader.getController();
             nextGraphicController.setController(controller);
@@ -164,7 +166,7 @@ public class LessonController {
         assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'mode.fxml'.";
         assert home != null : "fx:id=\"Home\" was not injected: check your FXML file 'mode.fxml'.";
         assert profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'mode.fxml'.";
-        assert ScheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'mode.fxml'.";
+        assert scheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'mode.fxml'.";
         assert backButtton != null : "fx:id=\"backButtton\" was not injected: check your FXML file 'mode.fxml'.";
         assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file 'mode.fxml'.";
         assert lessonListView != null : "fx:id=\"lessonListView\" was not injected: check your FXML file 'mode.fxml'.";
@@ -174,7 +176,7 @@ public class LessonController {
     public void setSatus() {
         List<String> listaStringhe = new ArrayList<>();
         controller.getLessonList().forEach(obj -> {
-            String stringa = obj.getLesson().toString()+"     classroom: "+controller.getClassroom().getClassroom();
+            String stringa = obj.getLesson()+"     classroom: "+controller.getClassroom().getClassroom();
             listaStringhe.add(stringa);
         });
         ObservableList<String> items = FXCollections.observableArrayList(listaStringhe);

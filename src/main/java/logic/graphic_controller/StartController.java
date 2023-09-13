@@ -6,18 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import logic.graphic_controller.cli.HomeCLI;
+import logic.model.Session;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class StartController extends Application {
+
+    public static final String MUSAHOLIC = "Musaholic";
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
         Parent root = loader.load();
-        Scene scene = new Scene(root,600,400);
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
-        stage.setTitle("Musaholic");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -25,14 +28,27 @@ public class StartController extends Application {
 
     public static void main(String[] args) {
 
-        boolean isCLI = true;
+//LOGIN NOT IMPLEMENTED, SIMULATED SESSION
+        Session session = Session.getInstance();
+        session.setEmail("utente1@gmail.com");
+        session.setId("S12");
+        session.setName("utenteNome");
+        session.setRole("student");
+        session.setSurname("utenteCognome");
 
-        //meccanismo di scelta
+        boolean isCLI = false;
+        String role = session.getRole();
 
-        if (isCLI) {
-            HomeCLI homeCLI = new HomeCLI();
-            homeCLI.start();
-        } else launch(args);
+        //meccanismo di scelta della grafica
+        if (Objects.equals(role, "student")) {
+
+            if (isCLI) {
+                HomeCLI homeCLI = new HomeCLI();
+                homeCLI.start();
+            } else launch(args);
+        } else {
+            System.out.println("Teacher interface not impelemnented yet");
+        }
     }
 }
 

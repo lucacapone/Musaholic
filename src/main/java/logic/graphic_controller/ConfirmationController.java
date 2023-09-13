@@ -2,6 +2,7 @@ package logic.graphic_controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -16,7 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.controller.BookingLessonController;
+import logic.exception.DAOException;
 import logic.model.TeacherLesson;
+
+import static logic.graphic_controller.StartController.MUSAHOLIC;
 
 public class ConfirmationController {
 
@@ -63,7 +67,13 @@ public class ConfirmationController {
         String name = teacherLesson.getName();
 
         controller.setTeacherDetails(id,name);
-        //controller.saveLesson();
+        try {
+            controller.saveLesson();
+        }
+        catch(DAOException exception){
+        }
+
+        catch(SQLException s){}
 
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
@@ -71,7 +81,7 @@ public class ConfirmationController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -88,7 +98,7 @@ public class ConfirmationController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -101,7 +111,7 @@ public class ConfirmationController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 

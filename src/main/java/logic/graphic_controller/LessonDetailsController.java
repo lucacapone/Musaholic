@@ -27,6 +27,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static logic.graphic_controller.StartController.MUSAHOLIC;
+
 public class LessonDetailsController {
 
     BookingLessonController controller;
@@ -86,7 +88,7 @@ public class LessonDetailsController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -101,7 +103,7 @@ public class LessonDetailsController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -143,7 +145,7 @@ public class LessonDetailsController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, 600, 400);
             stage.setScene(scene);
-            stage.setTitle("Forza Roma");
+            stage.setTitle(MUSAHOLIC);
             if (loader.getController() instanceof LessonController){
                 LessonController nextGraphicController=loader.getController();
                 nextGraphicController.setController(controller);
@@ -180,22 +182,23 @@ public class LessonDetailsController {
 
     }
 
-    private void getSchedule(ActionEvent event) {
-        LocalDate schedule = datePickerSchedule.getValue();
+    private LocalDate getSchedule(ActionEvent event) {
+
+        return datePickerSchedule.getValue();
     }
 
-    private void getMusicalInstrument(ActionEvent event) {
-        String musicalInstrument = choiceBoxMusicalInstrument.getValue();
+    private String getMusicalInstrument(ActionEvent event) {
+       return choiceBoxMusicalInstrument.getValue();
     }
 
-    private void getPrice(ActionEvent event) {
+    private String getPrice(ActionEvent event) {
 
-        String price = choiceBoxPrice.getValue();
+        return choiceBoxPrice.getValue();
     }
 
-    private void getTime(ActionEvent event) {
+    private String getTime(ActionEvent event) {
 
-        String time = choiceBoxTime.getValue();
+        return choiceBoxTime.getValue();
     }
 
 

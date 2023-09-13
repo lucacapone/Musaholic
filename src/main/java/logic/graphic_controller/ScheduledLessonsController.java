@@ -17,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.model.Lesson;
 
+import static logic.graphic_controller.StartController.MUSAHOLIC;
+
 public class ScheduledLessonsController {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -74,7 +76,7 @@ public class ScheduledLessonsController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
@@ -88,7 +90,7 @@ public class ScheduledLessonsController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 

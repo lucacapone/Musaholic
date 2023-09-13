@@ -11,6 +11,8 @@ import logic.exception.SyntaxBeanException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import static logic.graphic_controller.cli.HomeCLI.SYNTAX_ERROR;
+
 
 public class LessonDetailsCLI {
     BookingLessonController controller;
@@ -18,7 +20,7 @@ public class LessonDetailsCLI {
     public LessonDetailsCLI(BookingLessonController controller) {this.controller=controller;
     }
 
-    private static final String SYNTAX_ERROR = "error syntax!\n";
+
 
     public void start() {
         System.out.println("Book Lesson / Lesson Details:\n1)Insert musical instrument");

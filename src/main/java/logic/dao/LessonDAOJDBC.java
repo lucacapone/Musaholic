@@ -1,5 +1,6 @@
 package logic.dao;
 
+import logic.exception.SyntaxBeanException;
 import logic.model.Lesson;
 
 import java.sql.*;
@@ -15,7 +16,7 @@ public class LessonDAOJDBC implements LessonDAO{
 
 
     @Override
-    public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws Exception {
+    public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws DAOException,SQLException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = DbConnection.getConnection();
@@ -74,7 +75,7 @@ public class LessonDAOJDBC implements LessonDAO{
     }
 
     @Override
-    public void saveLesson(Lesson instance) throws Exception {
+    public void saveLesson(Lesson instance) throws SQLException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = DbConnection.getConnection();
@@ -86,7 +87,7 @@ public class LessonDAOJDBC implements LessonDAO{
                     ResultSet.CONCUR_READ_ONLY);
 
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = Queries.selectIdStudentLesson(stmt,"01");
+            ResultSet rs = Queries.selectIdStudentLesson(stmt,instance.getIdStudent());
 
 
             while (rs.next()) {
@@ -106,7 +107,7 @@ public class LessonDAOJDBC implements LessonDAO{
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
         }
-        catch (Exception e) {
+        catch (SQLException e) {
 
             // STEP 5.2: Clean-up dell'ambiente
             if (stmt != null)
@@ -115,15 +116,16 @@ public class LessonDAOJDBC implements LessonDAO{
                 conn.close();
         }
     }
-   /* public static void main(String[] args) throws Exception {
+/*
+    public static void main(String[] args) throws Exception {
 
        LocalDate date = LocalDate.of(2020, 1, 8);
-        Lesson l1 = new Lesson("01",date,"ccc",4,"11","33","44",6);
+        Lesson l1 = new Lesson("03",date,"ccc",4,"11","33","44",6);
         LessonDAOJDBC lcsv = new LessonDAOJDBC();
         lcsv.saveLesson(l1);
 
         List<Lesson> lessonList;
-        lessonList = lcsv.retrieveLessonByIdStudent("01");
+        lessonList = lcsv.retrieveLessonByIdStudent("03");
 
         for(int i=0;i<lessonList.size();i++){
            System.out.println(lessonList.get(i).getAll());
@@ -131,7 +133,7 @@ public class LessonDAOJDBC implements LessonDAO{
 
     }
 
-    */
+ */
 
 
 }

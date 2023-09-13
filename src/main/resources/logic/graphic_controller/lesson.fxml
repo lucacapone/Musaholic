@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.graphic_controller.LessonController">
    <children>
       <Label id="Home" fx:id="home" layoutX="135.0" layoutY="35.0" onMouseClicked="#goHome" text="Home" textFill="#f69002" />
-      <Label id="ScheduledLessons" fx:id="ScheduledLessons" layoutX="200.0" layoutY="35.0" onMouseClicked="#goScheduledLessons" text="Scheduled Lessons" />
+      <Label id="ScheduledLessons" fx:id="scheduledLessons" layoutX="200.0" layoutY="35.0" onMouseClicked="#goScheduledLessons" text="Scheduled Lessons" />
       <Label id="Contacts" fx:id="contacts" layoutX="320.0" layoutY="35.0" text="Contacts" />
       <Label id="Help" fx:id="help" layoutX="392.0" layoutY="35.0" text="Help" />
       <ImageView fitHeight="84.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">

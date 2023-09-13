@@ -1,16 +1,18 @@
 package logic.controller;
 
 
+import com.opencsv.exceptions.CsvValidationException;
 import logic.bean.*;
 import logic.boundary.ClassroomManageSystem;
+import logic.dao.LessonDAO;
 import logic.dao.LessonDAOJDBC;
+import logic.dao.TeacherLessonDAO;
 import logic.dao.TeacherLessonDAOJDBC;
 import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
-import logic.model.FreeClassroom;
-import logic.model.Lesson;
-import logic.model.TeacherLesson;
+import logic.model.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
@@ -42,7 +44,6 @@ public class BookingLessonController {
         this.lessonList = new ArrayList<>();
     }
 
-
     public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException,DAOException {
         this.setDate(d);
         this.setPrice(p);
@@ -62,8 +63,8 @@ public class BookingLessonController {
         String musicalInstrument = lesson.getMusicalInstrument();
         int price = lesson.getPrice();
         int time = lesson.getTime();
-        TeacherLessonDAOJDBC teacherLessonDAOJDBC = new TeacherLessonDAOJDBC();
-        this.lessonList = teacherLessonDAOJDBC.retrieveTeacherLesson(date,musicalInstrument,price,time);
+        TeacherLessonDAO teacherLessonDAO = new TeacherLessonDAOJDBC(); //Questo codice va sostituito in caso di cambiamento di modalità di persistenza
+        this.lessonList = teacherLessonDAO.retrieveTeacherLesson(date,musicalInstrument,price,time);
     }
 
     private void findFreeClassroom() throws SyntaxBeanException {
@@ -108,9 +109,13 @@ public class BookingLessonController {
         this.lesson.setTeacher(name);
 
     }
-    public void saveLesson() throws Exception {
-        //salvare nel db la lezione
-        LessonDAOJDBC lessonDAOJDBC= new LessonDAOJDBC();
-        lessonDAOJDBC.saveLesson(lesson);
+
+    public void saveLesson() throws DAOException, SQLException, CsvValidationException, IOException{
+        this.lesson.setIdStudent(Session.getInstance().getId());
+        LessonDAOFactory factory  = new LessonDAOFactory();
+        LessonDAO lessonDAO = factory.createLessonDAO();
+        lessonDAO.saveLesson(lesson);
+        System.out.println(lesson.getAll());
+        System.out.println(lessonDAO.retrieveLessonByIdStudent("01"));
     }
 }

@@ -64,7 +64,7 @@ public class Lesson {
         return time;
     }
 
-    public String getAll(){ return idStudent+"-"+date.toString()+"-"+musicalInstrument+"-"+String.valueOf(price)+"-"+idTeacher+"-"+teacher+"-"+classroom+"-"+String.valueOf(time);}
+    public String getAll(){ return idStudent+"-"+date.toString()+"-"+musicalInstrument+"-"+price+"-"+idTeacher+"-"+teacher+"-"+classroom+"-"+time;}
 
 
     public void setIdStudent(String idStudent) {
