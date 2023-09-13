@@ -3,8 +3,6 @@ package logic.boundary;
 import logic.bean.ClassroomAvailabilityBean;
 import logic.bean.FreeClassroomBean;
 import logic.exception.SyntaxBeanException;
-
-import java.util.Random;
 import java.time.LocalDate;
 
 public class ClassroomManageSystem {

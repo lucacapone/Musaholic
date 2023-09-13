@@ -92,7 +92,7 @@ public class LessonDAOJDBC implements LessonDAO{
 
             while (rs.next()) {
                 // lettura delle colonne "by number"
-                int number = rs.getInt("number");
+                rs.getInt("number");
 
             }
 
@@ -102,7 +102,7 @@ public class LessonDAOJDBC implements LessonDAO{
             // STEP 4.2: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-            int result = Queries.insertLesson(stmt, instance);
+            Queries.insertLesson(stmt, instance);
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();

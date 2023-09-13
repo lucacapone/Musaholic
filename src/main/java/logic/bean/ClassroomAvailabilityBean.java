@@ -44,7 +44,7 @@ public class ClassroomAvailabilityBean implements Serializable {
 
     private void dateSyntaxCheck(String date) throws SyntaxBeanException {
         try {
-            LocalDate d = LocalDate.parse(date);
+            LocalDate.parse(date);
         }
         catch (DateTimeException exception ) {
             throw new SyntaxBeanException("date error: input invalid") ;

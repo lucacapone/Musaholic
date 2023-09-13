@@ -51,7 +51,7 @@ public class LessonDAOCSV implements LessonDAO {
         CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
         String[] record;
 
-        List<Lesson> lessonList = new ArrayList<Lesson>();
+        List<Lesson> lessonList = new ArrayList<>();
 
         while ((record = csvReader.readNext()) != null) {
             int posNum= LessonAttributesOrder.ID_STUDENT;
@@ -60,9 +60,9 @@ public class LessonDAOCSV implements LessonDAO {
             if (recordFound) {
                 String is = record[LessonAttributesOrder.ID_STUDENT];
                 LocalDate d = LocalDate.parse(record[LessonAttributesOrder.DATE]);
-                int t = Integer.valueOf(record[LessonAttributesOrder.TIME]);
+                int t = Integer.parseInt(record[LessonAttributesOrder.TIME]);
                 String mi = record[LessonAttributesOrder.MUSICAL_INSTRUMENT];
-                int p = Integer.valueOf(record[LessonAttributesOrder.PRICE]);
+                int p = Integer.parseInt(record[LessonAttributesOrder.PRICE]);
                 String it = record[LessonAttributesOrder.ID_TEACHER];
                 String th = record[LessonAttributesOrder.TEACHER];
                 String c = record[LessonAttributesOrder.CLASSROOM];

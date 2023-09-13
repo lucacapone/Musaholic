@@ -59,7 +59,8 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException se2) {
+            }
+            catch (SQLException ignored) {
             }
             try {
                 if (conn != null)
