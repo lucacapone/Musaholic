@@ -92,7 +92,7 @@ public class HomeController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root,600,400);
         stage.setScene(scene);
-        stage.setTitle("Forza Roma");
+        stage.setTitle(MUSAHOLIC);
 
         stage.show();
 

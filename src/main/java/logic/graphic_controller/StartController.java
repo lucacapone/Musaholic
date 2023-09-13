@@ -9,6 +9,7 @@ import logic.graphic_controller.cli.HomeCLI;
 import logic.model.Session;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class StartController extends Application {
@@ -36,7 +37,7 @@ public class StartController extends Application {
         session.setRole("student");
         session.setSurname("utenteCognome");
 
-        boolean isCLI = false;
+        boolean isCLI = getView();
         String role = session.getRole();
 
         //meccanismo di scelta della grafica
@@ -49,6 +50,11 @@ public class StartController extends Application {
         } else {
             System.out.println("Teacher interface not impelemnented yet");
         }
+    }
+    public static boolean getView(){
+        LocalDate date = LocalDate.now();
+        int number = date.getDayOfMonth()%2;
+        return number == 0;
     }
 }
 

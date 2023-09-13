@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class PriceBean implements Serializable {
 
-    private String price;
+    private String price="";
 
     public String getPrice() {
         return price;

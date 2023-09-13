@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class MusicalInstrumentBean implements Serializable {
 
-    private String musicalInstrument;
+    private String musicalInstrument="";
 
     public String getMusicalInstrument() {
         return musicalInstrument;

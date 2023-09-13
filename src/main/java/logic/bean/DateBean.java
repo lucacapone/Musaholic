@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class DateBean implements Serializable {
 
-    private String date;
+    private String date="";
 
     public String getDate() {
         return date;

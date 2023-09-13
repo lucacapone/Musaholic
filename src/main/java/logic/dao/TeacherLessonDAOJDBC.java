@@ -13,62 +13,43 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
+public class TeacherLessonDAOJDBC implements TeacherLessonDAO {
 
     @Override
     public List<TeacherLesson> retrieveTeacherLesson(String date, String musicalInstrument, int price, int time) throws SQLException, DAOException {
-        // STEP 1: dichiarazioni
-        Statement stmt = null;
+        Statement stmt;
         Connection conn = DbConnection.getConnection();
         List<TeacherLesson> listOfTeacherLesson = new ArrayList<TeacherLesson>();
 
-        try {
+        stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
 
 
-            // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-
-            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = Queries.selectTeacherLesson(stmt,date,musicalInstrument,price,time);
-            if (!rs.first()){ // rs empty
-                DAOException e = new DAOException("No Lesson found matching with this lesson details");
-                throw e;
-            }
-
-            // riposizionamento del cursore
-            rs.first();
-            do{
-
-                // lettura delle colonne "by is student"
-                String idTeacher = rs.getString("idTeacher");
-                String name = rs.getString("name");
-
-
-               TeacherLesson l1 = new TeacherLesson(idTeacher,name,LocalDate.parse(date), musicalInstrument, price,time);
-
-                listOfTeacherLesson.add(l1);
-
-
-            }while(rs.next());
-
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            try {
-                if (stmt != null)
-                    stmt.close();
-            }
-            catch (SQLException ignored) {
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
+        ResultSet rs = Queries.selectTeacherLesson(stmt, date, musicalInstrument, price, time);
+        if (!rs.first()) { // rs empty
+            DAOException e = new DAOException("No Lesson found matching with this lesson details");
+            throw e;
         }
+
+        // riposizionamento del cursore
+        rs.first();
+        do {
+
+
+            String idTeacher = rs.getString("idTeacher");
+            String name = rs.getString("name");
+
+
+            TeacherLesson l1 = new TeacherLesson(idTeacher, name, LocalDate.parse(date), musicalInstrument, price, time);
+
+            listOfTeacherLesson.add(l1);
+
+
+        } while (rs.next());
+
+        // Clean-up dell'ambiente
+        rs.close();
+
 
         return listOfTeacherLesson;
     }
@@ -89,9 +70,6 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO{
     }
 
  */
-
-
-
 
 
 }

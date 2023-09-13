@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class TimeBean implements Serializable {
 
-    private String time;
+    private String time="";
 
     public String getTime() {
         return time;

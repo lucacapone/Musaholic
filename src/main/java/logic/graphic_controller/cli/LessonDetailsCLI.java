@@ -23,19 +23,21 @@ public class LessonDetailsCLI {
 
 
     public void start() {
-        System.out.println("Book Lesson / Lesson Details:\n1)Insert musical instrument");
-        Scanner scanner = new Scanner(System.in);
         DateBean dateBean = new DateBean();
         MusicalInstrumentBean musicalInstrumentBean = new MusicalInstrumentBean();
         PriceBean priceBean = new PriceBean();
         TimeBean timeBean = new TimeBean();
+        System.out.println("Book Lesson / Lesson Details:\n1)Insert musical instrument");
+        Scanner scanner = new Scanner(System.in);
 
         try {
             musicalInstrumentBean.setMusicalInstrument(scanner.nextLine());
         }
         catch (SyntaxBeanException exception){
             System.out.println(SYNTAX_ERROR);
-            start();
+            LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+            lessonDetailsCLI.start();
+
         }
         System.out.println("2)Insert date: format(YYYY-MM-DD)");
         try {
@@ -43,7 +45,8 @@ public class LessonDetailsCLI {
         }
         catch (SyntaxBeanException exception){
             System.out.println(SYNTAX_ERROR);
-            start();
+            LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+            lessonDetailsCLI.start();
 
         }
         System.out.println("3)Insert price");
@@ -52,7 +55,8 @@ public class LessonDetailsCLI {
         }
         catch (SyntaxBeanException exception){
             System.out.println(SYNTAX_ERROR);
-            start();
+            LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+            lessonDetailsCLI.start();
 
         }
         System.out.println("4)Insert time");
@@ -61,20 +65,30 @@ public class LessonDetailsCLI {
         }
         catch (SyntaxBeanException exception){
             System.out.println(SYNTAX_ERROR);
-            start();
+            LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+            lessonDetailsCLI.start();
         }
         if (controller.checkLessonDetails(dateBean,musicalInstrumentBean,priceBean,timeBean)) {
             try {
                 controller.setBooking(dateBean, musicalInstrumentBean, priceBean, timeBean);
             } catch (SyntaxBeanException ex) {
                 //gestione grafica  errore di sintassi input
+                System.out.println(SYNTAX_ERROR);
+                LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+                lessonDetailsCLI.start();
             } catch (DAOException ex) {
                 //gestione grafica del caso di lezione non trovata
+                System.out.println("Not found lesson: change th parameters");
+                LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+                lessonDetailsCLI.start();
             } catch (SQLException ex) {
                 //gestione grafica del caso di errore nel db connessione
+                System.out.println("Error database connection!");
+                LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+                lessonDetailsCLI.start();
             }
-
+            (new LessonCLI(controller)).start();
         }
-        (new LessonCLI(controller)).start();
+
     }
 }

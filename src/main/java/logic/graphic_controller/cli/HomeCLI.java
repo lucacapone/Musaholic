@@ -29,7 +29,8 @@ public class HomeCLI {
                     break;
                 case 2,3,4,5,6,7://user requires posting sale ad
                     validInput=TRUE;
-                    start();
+                    HomeCLI homeCLI = new HomeCLI();
+                    homeCLI.start();
 
                     break;
 

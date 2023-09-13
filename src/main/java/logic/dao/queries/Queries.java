@@ -8,10 +8,10 @@ import java .sql.*;
 
 public class Queries {
 
-    public static Integer insertLesson(Statement stmt, Lesson lesson) throws SQLException  {
-        String sql = String.format( "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)   VALUES ( '%s', '%s', '%s',%s, '%s', '%s','%s', %s);",lesson.getIdStudent(),lesson.getDate(), lesson.getMusicalInstrument(),lesson.getPrice(),lesson.getIdTeacher(),lesson.getTeacher(),lesson.getClassroom(),lesson.getTime());
+    public static String insertLesson(Lesson lesson) throws SQLException  {
+        String sql = "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?,? , ?, ?, ?, ?, ?, ?)";
        // "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)   VALUES ( '" + lesson.getIdStudent() + "', '" + lesson.getDate() + "', '" + lesson.getMusicalInstrument() + "','" + lesson.getPrice() + "', '" + lesson.getIdTeacher() + "', '" + lesson.getTeacher() + "','" + lesson.getClassroom() + "', '" + lesson.getTime() + "');";
-        return stmt.executeUpdate(sql);
+        return sql;
     }
 
     public static ResultSet selectIdStudentLesson(Statement stmt, String idStudent) throws SQLException  {

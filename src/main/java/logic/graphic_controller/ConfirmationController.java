@@ -3,7 +3,6 @@ package logic.graphic_controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +18,7 @@ import javafx.stage.Stage;
 import logic.bean.IndexChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.DAOException;
-import logic.model.TeacherLesson;
+
 
 import static logic.graphic_controller.StartController.MUSAHOLIC;
 
@@ -62,27 +61,35 @@ public class ConfirmationController {
 
     @FXML // fx:id="yesButton"
     private Button yesButton; // Value injected by FXMLLoader
+
+    @FXML // fx:id="outLabel"
+    private Label outLabel; // Value injected by FXMLLoader
+
     @FXML
     void goSavedLesson(ActionEvent event) throws Exception {
 
-        controller.setTeacherDetails(indexChoseBean);
+
         try {
+            controller.setTeacherDetails(indexChoseBean);
             controller.saveLesson();
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
+
+            Parent root = loader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root,600,400);
+            stage.setScene(scene);
+            stage.setTitle(MUSAHOLIC);
+
+            stage.show();
         }
         catch(DAOException exception){
+            //gestione grafica del caso di lezione non trovata
+            outLabel.setText("No lesson saved : sorry, try again later");
         }
-
-        catch(SQLException s){}
-
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
-
-        Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.setTitle(MUSAHOLIC);
-
-        stage.show();
+        catch(SQLException s){
+            //gestione grafica del caso di errore nel db connessione
+            outLabel.setText("No connected to the Database!");
+        }
 
     }
 
@@ -147,10 +154,10 @@ public class ConfirmationController {
         assert finalLessonLabel != null : "fx:id=\"finalLessonLabel\" was not injected: check your FXML file 'confirmation.fxml'.";
         assert noButton != null : "fx:id=\"noButton\" was not injected: check your FXML file 'confirmation.fxml'.";
         assert yesButton != null : "fx:id=\"yesButton\" was not injected: check your FXML file 'confirmation.fxml'.";
-
+        assert outLabel != null : "fx:id=\"outLabel\" was not injected: check your FXML file 'confirmation.fxml'.";
     }
 
-    public void setSatus( IndexChoseBean index, String finalLesson) {
+    public void setStatus(IndexChoseBean index, String finalLesson) {
         finalLessonLabel.setText(finalLesson);
         this.indexChoseBean = index;
     }

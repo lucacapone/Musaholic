@@ -1,10 +1,14 @@
 package logic.graphic_controller.cli;
 
+import logic.bean.IndexChoseBean;
 import logic.controller.BookingLessonController;
+import logic.exception.SyntaxBeanException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static logic.graphic_controller.cli.HomeCLI.SYNTAX_ERROR;
 
 public class LessonCLI {
     
@@ -21,17 +25,21 @@ public class LessonCLI {
             listaStringhe.add(stringa);
         });
         for(int i=0;i<listaStringhe.size();i++){
-            System.out.println(listaStringhe.get(i));
+            System.out.println(i+" idTeacher:"+listaStringhe.get(i));
         }
-        System.out.println("insert idTeacher of the lesson you chose");
-        String id = "";
-        id = scanner.nextLine();
+        System.out.println("insert the index of the chosen lesson");
+        IndexChoseBean indexChoseBean = new IndexChoseBean();
+        try {
+            indexChoseBean.setIndex(scanner.nextLine());
+        }
+        catch (SyntaxBeanException exception){
+            System.out.println(SYNTAX_ERROR);
+            LessonCLI lessonCLI = new LessonCLI(controller);
+            lessonCLI.start();
+        }
+
         //check sull'imput
-        System.out.println("insert Name Surname teacher of the lesson you chose");
-        String teacher = "";
-        teacher = scanner.nextLine();
-        //check sull'imput
-        (new ConfirmationCLI(controller,id,teacher)).start();
+        (new ConfirmationCLI(controller,indexChoseBean)).start();
 
     }
 }

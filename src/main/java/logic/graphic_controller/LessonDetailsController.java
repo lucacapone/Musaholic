@@ -33,8 +33,8 @@ public class LessonDetailsController {
 
     BookingLessonController controller;
 
-    public void setController(BookingLessonController controller){
-        this.controller=controller;
+    public void setController(BookingLessonController controller) {
+        this.controller = controller;
     }
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -70,6 +70,8 @@ public class LessonDetailsController {
     @FXML // fx:id="datePickerSchedule"
     private DatePicker datePickerSchedule; // Value injected by FXMLLoader
 
+    @FXML // fx:id="outLabel"
+    private Label outLabel; // Value injected by FXMLLoader
     @FXML // fx:id="sendDetailsButton"
     private Button sendDetailsButton; // Value injected by FXMLLoader
 
@@ -120,8 +122,7 @@ public class LessonDetailsController {
             musicalInstrumentBean.setMusicalInstrument((choiceBoxMusicalInstrument.getValue()));
             priceBean.setPrice(choiceBoxPrice.getValue());
             timeBean.setTime(choiceBoxTime.getValue());
-        }
-        catch (SyntaxBeanException exception){
+        } catch (SyntaxBeanException exception) {
             datePickerSchedule.setValue(null);
             choiceBoxMusicalInstrument.setValue("");
             choiceBoxPrice.setValue("");
@@ -129,30 +130,48 @@ public class LessonDetailsController {
 
         }
 
-        if (controller.checkLessonDetails(dateBean,musicalInstrumentBean,priceBean,timeBean)) {
+        if (controller.checkLessonDetails(dateBean, musicalInstrumentBean, priceBean, timeBean)) {
             try {
                 controller.setBooking(dateBean, musicalInstrumentBean, priceBean, timeBean);
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 600, 400);
+                stage.setScene(scene);
+                stage.setTitle(MUSAHOLIC);
+                if (loader.getController() instanceof LessonController) {
+                    LessonController nextGraphicController = loader.getController();
+                    nextGraphicController.setController(controller);
+                    nextGraphicController.setSatus();
+                }
+
+                stage.show();
             } catch (SyntaxBeanException ex) {
                 //gestione grafica  errore di sintassi input
+                outLabel.setText("Syntax error : retry...");
             } catch (DAOException ex) {
                 //gestione grafica del caso di lezione non trovata
+                outLabel.setText("No lesson found : change the parameters");
+                datePickerSchedule.setValue(null);
+                choiceBoxMusicalInstrument.setValue("");
+                choiceBoxPrice.setValue("");
+                choiceBoxTime.setValue("");
             } catch (SQLException ex) {
-            //gestione grafica del caso di errore nel db connessione
-        }
-
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 600, 400);
-            stage.setScene(scene);
-            stage.setTitle(MUSAHOLIC);
-            if (loader.getController() instanceof LessonController){
-                LessonController nextGraphicController=loader.getController();
-                nextGraphicController.setController(controller);
-                nextGraphicController.setSatus();
+                //gestione grafica del caso di errore nel db connessione
+                outLabel.setText("No connected to the Database!");
+                datePickerSchedule.setValue(null);
+                choiceBoxMusicalInstrument.setValue("");
+                choiceBoxPrice.setValue("");
+                choiceBoxTime.setValue("");
             }
 
-            stage.show();
+        } else {
+            outLabel.setText("Insert all parameters please");
+            datePickerSchedule.setValue(null);
+            choiceBoxMusicalInstrument.setValue("");
+            choiceBoxPrice.setValue("");
+            choiceBoxTime.setValue("");
+
         }
 
 
@@ -178,6 +197,7 @@ public class LessonDetailsController {
         assert choiceBoxPrice != null : "fx:id=\"choiceBoxPrice\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert choiceBoxTime != null : "fx:id=\"choiceBoxTime\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert datePickerSchedule != null : "fx:id=\"datePickerSchedule\" was not injected: check your FXML file 'lessonDetails.fxml'.";
+        assert outLabel != null : "fx:id=\"outLabel\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert sendDetailsButton != null : "fx:id=\"sendDetailsButton\" was not injected: check your FXML file 'lessonDetails.fxml'.";
 
     }
@@ -188,7 +208,7 @@ public class LessonDetailsController {
     }
 
     private String getMusicalInstrument(ActionEvent event) {
-       return choiceBoxMusicalInstrument.getValue();
+        return choiceBoxMusicalInstrument.getValue();
     }
 
     private String getPrice(ActionEvent event) {

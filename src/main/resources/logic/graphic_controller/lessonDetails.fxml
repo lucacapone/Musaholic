@@ -30,5 +30,6 @@
       <Label layoutX="60.0" layoutY="250.0" text="Select the price:" />
       <ChoiceBox id="choiceBoxTime" fx:id="choiceBoxTime" layoutX="366.0" layoutY="283.0" prefWidth="150.0" />
       <Label layoutX="369.0" layoutY="250.0" text="Select the time:" />
+      <Label id="outLabel" fx:id="outLabel" layoutX="250.0" layoutY="102.0" prefHeight="25.0" prefWidth="314.0" textFill="#f24d4d" />
    </children>
 </Pane>

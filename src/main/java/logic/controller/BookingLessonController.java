@@ -53,8 +53,8 @@ public class BookingLessonController {
         findFreeClassroom();
 
         // By DAO teacher : retrieveTeacherLesson
-        findTeacherLessons();
 
+        findTeacherLessons();
     }
 
     private void findTeacherLessons() throws DAOException, SQLException {
@@ -82,7 +82,8 @@ public class BookingLessonController {
         String musicalInstrument = musicalInstrumentBean.getMusicalInstrument();
         String price = priceBean.getPrice();
         String time = timeBean.getTime();
-        return !Objects.equals(date, "") && !Objects.equals(musicalInstrument, "") && !Objects.equals(price, "") && !Objects.equals(time, "");
+        Boolean alert= Objects.equals(date, "") || Objects.equals(musicalInstrument, "") || Objects.equals(price, "") || Objects.equals(time, "");
+    return !alert;
     }
 
     private void setDate(DateBean dateBean) {
@@ -115,7 +116,5 @@ public class BookingLessonController {
         LessonDAOFactory factory  = new LessonDAOFactory();
         LessonDAO lessonDAO = factory.createLessonDAO();
         lessonDAO.saveLesson(lesson);
-        System.out.println(lesson.getAll());
-        System.out.println(lessonDAO.retrieveLessonByIdStudent("01"));
     }
 }

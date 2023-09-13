@@ -14,7 +14,7 @@ import logic.dao.db_connection.DbConnection;
 
 public class LessonDAOJDBC implements LessonDAO{
 
-
+/*
     @Override
     public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws DAOException,SQLException {
         // STEP 1: dichiarazioni
@@ -74,58 +74,49 @@ public class LessonDAOJDBC implements LessonDAO{
         return listOfLesson;
     }
 
+ */
+
     @Override
     public void saveLesson(Lesson instance) throws SQLException {
-        // STEP 1: dichiarazioni
-        Statement stmt = null;
-        Connection conn = DbConnection.getConnection();
+        PreparedStatement pstmt = null;
 
         try {
+            String query="INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            pstmt = DbConnection.getConnection().prepareStatement(query);
 
-            // STEP 4.1: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
+            pstmt.setString(1, instance.getIdStudent());
+            pstmt.setDate(2,Date.valueOf(instance.getDate())); //String.valueOf(instance.getDate())
+            pstmt.setString(3, instance.getMusicalInstrument());
+            pstmt.setInt(4, instance.getPrice());
+            pstmt.setString(5, instance.getIdTeacher());
+            pstmt.setString(6, instance.getTeacher());
+            pstmt.setString(7, instance.getClassroom());
+            pstmt.setInt(8, instance.getTime());
 
-            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = Queries.selectIdStudentLesson(stmt,instance.getIdStudent());
-
-
-            while (rs.next()) {
-                // lettura delle colonne "by number"
-                rs.getInt("number");
-
-            }
-
+            pstmt.executeUpdate();
 
 
 
-            // STEP 4.2: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            Queries.insertLesson(stmt, instance);
-
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
         }
         catch (SQLException e) {
-
+System.out.println(e);
             // STEP 5.2: Clean-up dell'ambiente
-            if (stmt != null)
-                stmt.close();
-            if (conn != null)
-                conn.close();
+            if (pstmt != null) {
+                pstmt.close();
+            }
         }
     }
-/*
+
+    /*
     public static void main(String[] args) throws Exception {
 
        LocalDate date = LocalDate.of(2020, 1, 8);
-        Lesson l1 = new Lesson("03",date,"ccc",4,"11","33","44",6);
+        Lesson l1 = new Lesson("05",date,"ccc",4,"11","33","44",6);
         LessonDAOJDBC lcsv = new LessonDAOJDBC();
         lcsv.saveLesson(l1);
 
         List<Lesson> lessonList;
-        lessonList = lcsv.retrieveLessonByIdStudent("03");
+        lessonList = lcsv.retrieveLessonByIdStudent("05");
 
         for(int i=0;i<lessonList.size();i++){
            System.out.println(lessonList.get(i).getAll());
@@ -133,7 +124,11 @@ public class LessonDAOJDBC implements LessonDAO{
 
     }
 
- */
+
+     */
+
+
+
 
 
 }

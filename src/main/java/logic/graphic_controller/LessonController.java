@@ -90,7 +90,7 @@ public class LessonController {
         if (loader.getController() instanceof ConfirmationController){
             ConfirmationController nextGraphicController=loader.getController();
             nextGraphicController.setController(controller);
-            nextGraphicController.setSatus(indexChoseBean,finalLesson);
+            nextGraphicController.setStatus(indexChoseBean,finalLesson);
         }
 
         stage.show();
