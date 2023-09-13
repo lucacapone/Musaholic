@@ -106,7 +106,7 @@ public class BookingLessonController {
     public  void setTeacherDetails(String id, String name) {
         this.lesson.setIdTeacher(id);
         this.lesson.setTeacher(name);
-        System.out.println(lesson.getAll());
+
     }
     public void saveLesson() throws Exception {
         //salvare nel db la lezione

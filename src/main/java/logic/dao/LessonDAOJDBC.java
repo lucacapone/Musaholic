@@ -62,8 +62,7 @@ public class LessonDAOJDBC implements LessonDAO{
             try {
                 if (stmt != null)
                     stmt.close();
-            } catch (SQLException ignored) {
-            }
+            } catch (SQLException ignored){}
             try {
                 if (conn != null)
                     conn.close();
