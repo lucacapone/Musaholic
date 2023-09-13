@@ -5,7 +5,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import logic.bean.*;
 import logic.boundary.ClassroomManageSystem;
 import logic.dao.LessonDAO;
-import logic.dao.LessonDAOJDBC;
 import logic.dao.TeacherLessonDAO;
 import logic.dao.TeacherLessonDAOJDBC;
 import logic.exception.DAOException;

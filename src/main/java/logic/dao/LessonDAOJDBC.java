@@ -1,6 +1,6 @@
 package logic.dao;
 
-import logic.exception.SyntaxBeanException;
+
 import logic.model.Lesson;
 
 import java.sql.*;

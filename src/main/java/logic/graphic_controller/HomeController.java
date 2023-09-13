@@ -53,7 +53,7 @@ public class HomeController {
 
 
     @FXML
-    void StartBookLesson(ActionEvent event) throws IOException {
+    void startBookLesson(ActionEvent event) throws IOException {
         BookingLessonController  controller = new BookingLessonController();
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
             Parent root = loader.load();

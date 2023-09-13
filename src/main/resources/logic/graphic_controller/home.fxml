@@ -16,7 +16,7 @@
          <image>
             <Image url="@../../images/logo.png" />
          </image></ImageView>
-      <Button id="BookLessonButton" fx:id="bookLessonButton" layoutX="53.0" layoutY="203.0" mnemonicParsing="false" onAction="#StartBookLesson" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Book Lesson" textFill="#fdfbfb" />
+      <Button id="BookLessonButton" fx:id="bookLessonButton" layoutX="53.0" layoutY="203.0" mnemonicParsing="false" onAction="#startBookLesson" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Book Lesson" textFill="#fdfbfb" />
       <Button id="MusicalInstrumentsButton" fx:id="musicalInstrumentsButton" layoutX="232.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Musical Instruments" textFill="#fdfbfb" />
       <Button id="NewsButton" fx:id="newsButton" layoutX="404.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="News" textFill="#fdfbfb" />
       <Label layoutX="64.0" layoutY="140.0" text="choose what to do:" />
