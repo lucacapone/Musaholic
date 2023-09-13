@@ -17,7 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import logic.bean.IndexChoseBean;
 import logic.controller.BookingLessonController;
+import logic.exception.SyntaxBeanException;
 
 import static logic.graphic_controller.StartController.MUSAHOLIC;
 
@@ -31,15 +33,8 @@ public class LessonController {
 
     private String finalLesson;
 
-    private int index;
+    private IndexChoseBean indexChoseBean;
 
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
 
     public String getFinalLesson() {
         return finalLesson;
@@ -95,7 +90,7 @@ public class LessonController {
         if (loader.getController() instanceof ConfirmationController){
             ConfirmationController nextGraphicController=loader.getController();
             nextGraphicController.setController(controller);
-            nextGraphicController.setSatus(controller.getLessonList(),index,finalLesson);
+            nextGraphicController.setSatus(indexChoseBean,finalLesson);
         }
 
         stage.show();
@@ -153,11 +148,13 @@ public class LessonController {
 
 
     @FXML
-    void showLesson(MouseEvent event) {
+    void showLesson(MouseEvent event) throws SyntaxBeanException {
         // mettere la stringa lesson
         resultLabel.setText(lessonListView.getSelectionModel().getSelectedItem());
         finalLesson = lessonListView.getSelectionModel().getSelectedItem();
-        index = lessonListView.getSelectionModel().getSelectedIndex();
+        IndexChoseBean index = new IndexChoseBean();
+        index.setIndex(String.valueOf(lessonListView.getSelectionModel().getSelectedIndex()));
+        indexChoseBean = index;
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

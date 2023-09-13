@@ -34,7 +34,7 @@ public class ConfirmationCLI {
             switch (num) {
                 case 1:
                     validInput=TRUE;
-                    controller.setTeacherDetails(id,teacher);
+                    //controller.setTeacherDetails(id,teacher);
                     //controller.saveLesson();
                     (new HomeCLI()).start();
                     break;

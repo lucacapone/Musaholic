@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import logic.bean.IndexChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.DAOException;
 import logic.model.TeacherLesson;
@@ -30,7 +31,7 @@ public class ConfirmationController {
         this.controller=controller;
     }
 
-    private TeacherLesson teacherLesson;
+    private IndexChoseBean indexChoseBean;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -63,10 +64,8 @@ public class ConfirmationController {
     private Button yesButton; // Value injected by FXMLLoader
     @FXML
     void goSavedLesson(ActionEvent event) throws Exception {
-        String id = teacherLesson.getIdTeacher();
-        String name = teacherLesson.getName();
 
-        controller.setTeacherDetails(id,name);
+        controller.setTeacherDetails(indexChoseBean);
         try {
             controller.saveLesson();
         }
@@ -151,9 +150,9 @@ public class ConfirmationController {
 
     }
 
-    public void setSatus(List<TeacherLesson> lesson, int index, String finalLesson) {
+    public void setSatus( IndexChoseBean index, String finalLesson) {
         finalLessonLabel.setText(finalLesson);
-        this.teacherLesson = lesson.get(index);
+        this.indexChoseBean = index;
     }
 }
   
