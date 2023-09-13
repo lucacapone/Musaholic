@@ -1,4 +1,4 @@
-package logic.dao.dbConnection;
+package logic.dao.db_connection;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package logic.graphic_controller.CLI;
+package logic.graphic_controller.cli;
 
 import logic.controller.BookingLessonController;
 

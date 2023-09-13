@@ -1,6 +1,6 @@
 package logic.dao;
 
-import logic.dao.dbConnection.DbConnection;
+import logic.dao.db_connection.DbConnection;
 import logic.dao.queries.Queries;
 import logic.exception.DAOException;
 import logic.model.TeacherLesson;

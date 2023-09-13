@@ -9,26 +9,26 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.graphic_controller.ScheduledLessonsController">
    <children>
-      <Label id="Home" fx:id="Home" layoutX="135.0" layoutY="35.0" onMouseClicked="#goHome" text="Home" />
-      <Label id="ScheduledLessons" fx:id="ScheduledLessons" layoutX="200.0" layoutY="35.0" onMouseClicked="#goScheduledLessons" text="Scheduled Lessons" textFill="#fa9902" />
-      <Label id="Contacts" fx:id="Contacts" layoutX="320.0" layoutY="35.0" text="Contacts" />
-      <Label id="Help" fx:id="Help" layoutX="392.0" layoutY="35.0" text="Help" />
+      <Label id="Home" fx:id="home" layoutX="135.0" layoutY="35.0" onMouseClicked="#goHome" text="Home" />
+      <Label id="ScheduledLessons" fx:id="scheduledLessons" layoutX="200.0" layoutY="35.0" onMouseClicked="#goScheduledLessons" text="Scheduled Lessons" textFill="#fa9902" />
+      <Label id="Contacts" fx:id="contacts" layoutX="320.0" layoutY="35.0" text="Contacts" />
+      <Label id="Help" fx:id="help" layoutX="392.0" layoutY="35.0" text="Help" />
       <ImageView fitHeight="84.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/logo.png" />
          </image></ImageView>
-      <Label id="Profile" fx:id="Profile" layoutX="524.0" layoutY="35.0" text="Profile" />
+      <Label id="Profile" fx:id="profile" layoutX="524.0" layoutY="35.0" text="Profile" />
       <Label layoutX="20.0" layoutY="123.0" text="Scheduled Lessons" />
       <TableView layoutX="14.0" layoutY="169.0" prefHeight="200.0" prefWidth="570.0">
         <columns>
-          <TableColumn id="NumberLesson" fx:id="NumberLesson" prefWidth="50.66665554046631" text="Number" />
-          <TableColumn id="ModeLesson" fx:id="ModeLesson" prefWidth="73.99999237060547" text="Mode" />
-            <TableColumn id="DateLesson" fx:id="DateLesson" prefWidth="69.33328247070312" text="Date" />
-            <TableColumn id="MusicalInstrumentLesson" fx:id="MusicalInstrumentLesson" prefWidth="113.33332824707031" text="Musical Instrument" />
-            <TableColumn id="PaymentLesson" fx:id="PaymentLesson" prefWidth="62.0" text="Payment" />
-            <TableColumn id="DistanceLesson" fx:id="DistanceLesson" prefWidth="58.6666259765625" text="Distance" />
-            <TableColumn id="TeacherLesson" fx:id="TeacherLesson" prefWidth="95.99996948242188" text="Teacher" />
-            <TableColumn id="DoneLesson" fx:id="DoneLesson" minWidth="0.6666259765625" prefWidth="44.66668701171875" text="Done" />
+          <TableColumn id="NumberLesson" fx:id="numberLesson" prefWidth="50.66665554046631" text="Number" />
+          <TableColumn id="ModeLesson" fx:id="modeLesson" prefWidth="73.99999237060547" text="Mode" />
+            <TableColumn id="DateLesson" fx:id="dateLesson" prefWidth="69.33328247070312" text="Date" />
+            <TableColumn id="MusicalInstrumentLesson" fx:id="musicalInstrumentLesson" prefWidth="113.33332824707031" text="Musical Instrument" />
+            <TableColumn id="PaymentLesson" fx:id="paymentLesson" prefWidth="62.0" text="Payment" />
+            <TableColumn id="DistanceLesson" fx:id="distanceLesson" prefWidth="58.6666259765625" text="Distance" />
+            <TableColumn id="TeacherLesson" fx:id="teacherLesson" prefWidth="95.99996948242188" text="Teacher" />
+            <TableColumn id="DoneLesson" fx:id="doneLesson" minWidth="0.6666259765625" prefWidth="44.66668701171875" text="Done" />
         </columns>
       </TableView>
    </children>

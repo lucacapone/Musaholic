@@ -26,28 +26,28 @@ public class HomeController {
     private URL location;
 
     @FXML // fx:id="Contacts"
-    private Label Contacts; // Value injected by FXMLLoader
+    private Label contacts; // Value injected by FXMLLoader
 
     @FXML // fx:id="Help"
-    private Label Help; // Value injected by FXMLLoader
+    private Label help; // Value injected by FXMLLoader
 
     @FXML // fx:id="Home"
-    private Label Home; // Value injected by FXMLLoader
+    private Label home; // Value injected by FXMLLoader
 
     @FXML // fx:id="MusicalInstrumentsButton"
-    private Button MusicalInstrumentsButton; // Value injected by FXMLLoader
+    private Button musicalInstrumentsButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="NewsButton"
-    private Button NewsButton; // Value injected by FXMLLoader
+    private Button newsButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="Profile"
-    private Label Profile; // Value injected by FXMLLoader
+    private Label profile; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduleLessonButton"
-    private Button BookLessonButton; // Value injected by FXMLLoader
+    private Button bookLessonButton; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
-    private Label ScheduledLessons; // Value injected by FXMLLoader
+    private Label scheduledLessons; // Value injected by FXMLLoader
 
 
     @FXML
@@ -99,14 +99,14 @@ public class HomeController {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert Contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'Untitled'.";
-        assert Help != null : "fx:id=\"Help\" was not injected: check your FXML file 'Untitled'.";
-        assert Home != null : "fx:id=\"Home\" was not injected: check your FXML file 'Untitled'.";
-        assert MusicalInstrumentsButton != null : "fx:id=\"MusicalInstrumentsButton\" was not injected: check your FXML file 'Untitled'.";
-        assert NewsButton != null : "fx:id=\"NewsButton\" was not injected: check your FXML file 'Untitled'.";
-        assert Profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'Untitled'.";
-        assert BookLessonButton != null : "fx:id=\"BookLessonButton\" was not injected: check your FXML file 'Untitled'.";
-        assert ScheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'Untitled'.";
+        assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'Untitled'.";
+        assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'Untitled'.";
+        assert home != null : "fx:id=\"Home\" was not injected: check your FXML file 'Untitled'.";
+        assert musicalInstrumentsButton != null : "fx:id=\"MusicalInstrumentsButton\" was not injected: check your FXML file 'Untitled'.";
+        assert newsButton != null : "fx:id=\"NewsButton\" was not injected: check your FXML file 'Untitled'.";
+        assert profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'Untitled'.";
+        assert bookLessonButton != null : "fx:id=\"BookLessonButton\" was not injected: check your FXML file 'Untitled'.";
+        assert scheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'Untitled'.";
 
     }
 

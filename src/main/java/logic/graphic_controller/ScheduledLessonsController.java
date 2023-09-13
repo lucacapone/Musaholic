@@ -26,43 +26,43 @@ public class ScheduledLessonsController {
     private URL location;
 
     @FXML // fx:id="Contacts"
-    private Label Contacts; // Value injected by FXMLLoader
+    private Label contacts; // Value injected by FXMLLoader
 
     @FXML // fx:id="DateLesson"
-    private TableColumn<Lesson,LocalDate> DateLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson,LocalDate> dateLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="DistanceLesson"
-    private TableColumn<Lesson,String> DistanceLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson,String> distanceLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="DoneLesson"
-    private TableColumn<Lesson,Boolean> DoneLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson,Boolean> doneLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="Help"
-    private Label Help; // Value injected by FXMLLoader
+    private Label help; // Value injected by FXMLLoader
 
     @FXML // fx:id="Home"
-    private Label Home; // Value injected by FXMLLoader
+    private Label home; // Value injected by FXMLLoader
 
     @FXML // fx:id="ModeLesson"
-    private TableColumn<Lesson, String> ModeLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, String> modeLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="MusicalInstrumentLesson"
-    private TableColumn<Lesson, String> MusicalInstrumentLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, String> musicalInstrumentLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="NumberLesson"
-    private TableColumn<Lesson, Integer> NumberLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, Integer> numberLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="PaymentLesson"
-    private TableColumn<Lesson, String> PaymentLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, String> paymentLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="Profile"
-    private Label Profile; // Value injected by FXMLLoader
+    private Label profile; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
-    private Label ScheduledLessons; // Value injected by FXMLLoader
+    private Label scheduledLessons; // Value injected by FXMLLoader
 
     @FXML // fx:id="TeacherLesson"
-    private TableColumn<Lesson, String> TeacherLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, String> teacherLesson; // Value injected by FXMLLoader
 
     @FXML
     void goHome(MouseEvent event) throws IOException {
@@ -96,27 +96,27 @@ public class ScheduledLessonsController {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        NumberLesson.setCellValueFactory(new PropertyValueFactory<Lesson,Integer>("number"));
-        ModeLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("mode"));
-        DateLesson.setCellValueFactory(new PropertyValueFactory<Lesson,LocalDate>("date"));
-        MusicalInstrumentLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("musicalInstrument"));
-        PaymentLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("payment"));
-        DistanceLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("distance"));
-        TeacherLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("teacher"));
-        DoneLesson.setCellValueFactory(new PropertyValueFactory<Lesson,Boolean>("done"));
-        assert Contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert DateLesson != null : "fx:id=\"DateLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert DistanceLesson != null : "fx:id=\"DistanceLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert DoneLesson != null : "fx:id=\"DoneLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert Help != null : "fx:id=\"Help\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert Home != null : "fx:id=\"Home\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert ModeLesson != null : "fx:id=\"ModeLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert MusicalInstrumentLesson != null : "fx:id=\"MusicalInstrumentLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert NumberLesson != null : "fx:id=\"NumberLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert PaymentLesson != null : "fx:id=\"PaymentLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert Profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert ScheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
-        assert TeacherLesson != null : "fx:id=\"TeacherLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        numberLesson.setCellValueFactory(new PropertyValueFactory<Lesson,Integer>("number"));
+        modeLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("mode"));
+        dateLesson.setCellValueFactory(new PropertyValueFactory<Lesson,LocalDate>("date"));
+        musicalInstrumentLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("musicalInstrument"));
+        paymentLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("payment"));
+        distanceLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("distance"));
+        teacherLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("teacher"));
+        doneLesson.setCellValueFactory(new PropertyValueFactory<Lesson,Boolean>("done"));
+        assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert dateLesson != null : "fx:id=\"DateLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert distanceLesson != null : "fx:id=\"DistanceLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert doneLesson != null : "fx:id=\"DoneLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert home != null : "fx:id=\"Home\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert modeLesson != null : "fx:id=\"ModeLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert musicalInstrumentLesson != null : "fx:id=\"MusicalInstrumentLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert numberLesson != null : "fx:id=\"NumberLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert paymentLesson != null : "fx:id=\"PaymentLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert scheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
+        assert teacherLesson != null : "fx:id=\"TeacherLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
 
     }
 

@@ -35,19 +35,19 @@ public class ConfirmationController {
     private URL location;
 
     @FXML // fx:id="Contacts"
-    private Label Contacts; // Value injected by FXMLLoader
+    private Label contacts; // Value injected by FXMLLoader
 
     @FXML // fx:id="Help"
-    private Label Help; // Value injected by FXMLLoader
+    private Label help; // Value injected by FXMLLoader
 
     @FXML // fx:id="Home"
-    private Label Home; // Value injected by FXMLLoader
+    private Label home; // Value injected by FXMLLoader
 
     @FXML // fx:id="Profile"
-    private Label Profile; // Value injected by FXMLLoader
+    private Label profile; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
-    private Label ScheduledLessons; // Value injected by FXMLLoader
+    private Label scheduledLessons; // Value injected by FXMLLoader
 
     @FXML // fx:id="finalLessonLabel"
     private Label finalLessonLabel; // Value injected by FXMLLoader
@@ -130,11 +130,11 @@ public class ConfirmationController {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert Contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'confirmation.fxml'.";
-        assert Help != null : "fx:id=\"Help\" was not injected: check your FXML file 'confirmation.fxml'.";
-        assert Home != null : "fx:id=\"Home\" was not injected: check your FXML file 'confirmation.fxml'.";
-        assert Profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'confirmation.fxml'.";
-        assert ScheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'confirmation.fxml'.";
+        assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'confirmation.fxml'.";
+        assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'confirmation.fxml'.";
+        assert home != null : "fx:id=\"Home\" was not injected: check your FXML file 'confirmation.fxml'.";
+        assert profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'confirmation.fxml'.";
+        assert scheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'confirmation.fxml'.";
         assert finalLessonLabel != null : "fx:id=\"finalLessonLabel\" was not injected: check your FXML file 'confirmation.fxml'.";
         assert noButton != null : "fx:id=\"noButton\" was not injected: check your FXML file 'confirmation.fxml'.";
         assert yesButton != null : "fx:id=\"yesButton\" was not injected: check your FXML file 'confirmation.fxml'.";

@@ -42,19 +42,19 @@ public class LessonDetailsController {
     private URL location;
 
     @FXML // fx:id="Contacts"
-    private Label Contacts; // Value injected by FXMLLoader
+    private Label contacts; // Value injected by FXMLLoader
 
     @FXML // fx:id="Help"
-    private Label Help; // Value injected by FXMLLoader
+    private Label help; // Value injected by FXMLLoader
 
     @FXML // fx:id="Home"
-    private Label Home; // Value injected by FXMLLoader
+    private Label home; // Value injected by FXMLLoader
 
     @FXML // fx:id="Profile"
-    private Label Profile; // Value injected by FXMLLoader
+    private Label profile; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
-    private Label ScheduledLessons; // Value injected by FXMLLoader
+    private Label scheduledLessons; // Value injected by FXMLLoader
 
     @FXML // fx:id="choiceBoxMusicalInstrument"
     private ChoiceBox<String> choiceBoxMusicalInstrument; // Value injected by FXMLLoader
@@ -167,11 +167,11 @@ public class LessonDetailsController {
         choiceBoxPrice.setOnAction(this::getPrice);
         choiceBoxTime.setOnAction(this::getTime);
         datePickerSchedule.setOnAction(this::getSchedule);
-        assert Contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'lessonDetails.fxml'.";
-        assert Help != null : "fx:id=\"Help\" was not injected: check your FXML file 'lessonDetails.fxml'.";
-        assert Home != null : "fx:id=\"Home\" was not injected: check your FXML file 'lessonDetails.fxml'.";
-        assert Profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'lessonDetails.fxml'.";
-        assert ScheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'lessonDetails.fxml'.";
+        assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'lessonDetails.fxml'.";
+        assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'lessonDetails.fxml'.";
+        assert home != null : "fx:id=\"Home\" was not injected: check your FXML file 'lessonDetails.fxml'.";
+        assert profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'lessonDetails.fxml'.";
+        assert scheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert choiceBoxMusicalInstrument != null : "fx:id=\"choiceBoxMusicalInstrument\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert choiceBoxPrice != null : "fx:id=\"choiceBoxPrice\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert choiceBoxTime != null : "fx:id=\"choiceBoxTime\" was not injected: check your FXML file 'lessonDetails.fxml'.";

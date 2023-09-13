@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import logic.graphic_controller.CLI.HomeCLI;
+import logic.graphic_controller.cli.HomeCLI;
 
 import java.io.IOException;
 import java.util.Objects;

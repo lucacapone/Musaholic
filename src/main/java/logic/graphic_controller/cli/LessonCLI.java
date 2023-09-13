@@ -1,15 +1,10 @@
-package logic.graphic_controller.CLI;
+package logic.graphic_controller.cli;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import logic.controller.BookingLessonController;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
 public class LessonCLI {
     
@@ -22,7 +17,7 @@ public class LessonCLI {
         Scanner scanner = new Scanner(System.in);
         List<String> listaStringhe = new ArrayList<>();
         controller.getLessonList().forEach(obj -> {
-            String stringa = obj.getLesson().toString()+"     classroom: "+controller.getClassroom().getClassroom();
+            String stringa = obj.getLesson()+"     classroom: "+controller.getClassroom().getClassroom();
             listaStringhe.add(stringa);
         });
         for(int i=0;i<listaStringhe.size();i++){

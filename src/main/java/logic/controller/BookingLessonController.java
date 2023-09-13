@@ -50,14 +50,14 @@ public class BookingLessonController {
         this.setMusicalInstrument(m);
 
         // Classroom Manage System : get free classroom
-        FindFreeClassroom();
+        findFreeClassroom();
 
         // By DAO teacher : retrieveTeacherLesson
-        FindTeacherLessons();
+        findTeacherLessons();
 
     }
 
-    private void FindTeacherLessons() throws DAOException, SQLException {
+    private void findTeacherLessons() throws DAOException, SQLException {
         String date = lesson.getDate().toString();
         String musicalInstrument = lesson.getMusicalInstrument();
         int price = lesson.getPrice();
@@ -66,7 +66,7 @@ public class BookingLessonController {
         this.lessonList = teacherLessonDAOJDBC.retrieveTeacherLesson(date,musicalInstrument,price,time);
     }
 
-    private void FindFreeClassroom() throws SyntaxBeanException {
+    private void findFreeClassroom() throws SyntaxBeanException {
         ClassroomAvailabilityBean classroomAvailabilityBean = new ClassroomAvailabilityBean();
         classroomAvailabilityBean.setDate(lesson.getDate().toString());
         classroomAvailabilityBean.setTime(Integer.toString(lesson.getTime()));
