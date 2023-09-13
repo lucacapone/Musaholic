@@ -14,7 +14,7 @@ import logic.dao.db_connection.DbConnection;
 
 public class LessonDAOJDBC implements LessonDAO{
 
-/*
+
     @Override
     public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws DAOException,SQLException {
         // STEP 1: dichiarazioni
@@ -22,7 +22,7 @@ public class LessonDAOJDBC implements LessonDAO{
         Connection conn = DbConnection.getConnection();
         List<Lesson> listOfLesson = new ArrayList<Lesson>();
 
-        try {
+
 
 
             // STEP 4: creazione ed esecuzione della query
@@ -58,23 +58,12 @@ public class LessonDAOJDBC implements LessonDAO{
 
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-        } finally {
-            // STEP 5.2: Clean-up dell'ambiente
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException ignored){}
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }
+
+
         return listOfLesson;
     }
 
- */
+
 
     @Override
     public void saveLesson(Lesson instance) throws SQLException {

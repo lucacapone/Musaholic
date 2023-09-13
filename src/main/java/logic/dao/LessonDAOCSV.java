@@ -32,12 +32,12 @@ public class LessonDAOCSV implements LessonDAO {
 
     }
 
-    /*
+
     @Override
     public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws CsvValidationException, IOException, DAOException {
 
 
-        List<Lesson> lst = new ArrayList<Lesson>();
+        List<Lesson> lst = new ArrayList<>();
 
 
 
@@ -88,7 +88,7 @@ public class LessonDAOCSV implements LessonDAO {
     }
 
 
-     */
+
     @Override
   public  synchronized void saveLesson(Lesson instance) throws IOException {
         // create csvWriter object passing file reader as a parameter

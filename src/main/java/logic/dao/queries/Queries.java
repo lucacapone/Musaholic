@@ -10,7 +10,6 @@ public class Queries {
 
     public static String insertLesson(Lesson lesson) throws SQLException  {
         String sql = "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?,? , ?, ?, ?, ?, ?, ?)";
-       // "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)   VALUES ( '" + lesson.getIdStudent() + "', '" + lesson.getDate() + "', '" + lesson.getMusicalInstrument() + "','" + lesson.getPrice() + "', '" + lesson.getIdTeacher() + "', '" + lesson.getTeacher() + "','" + lesson.getClassroom() + "', '" + lesson.getTime() + "');";
         return sql;
     }
 
