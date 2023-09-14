@@ -44,7 +44,7 @@ public class LessonDAOCSV implements LessonDAO {
 
 
         if (lst.isEmpty()) {
-            lst = this.retrieveLessonByIdStudent(this.fd, idStudent);
+            lst = retrieveLessonByIdStudent(this.fd, idStudent);
 
         }
 
