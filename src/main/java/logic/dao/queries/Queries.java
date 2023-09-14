@@ -8,9 +8,9 @@ import java .sql.*;
 
 public class Queries {
 
-    public static String insertLesson() throws SQLException  {
-        String sql = "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?,? , ?, ?, ?, ?, ?, ?)";
-        return sql;
+    public static String insertLesson()  {
+        return  "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?,? , ?, ?, ?, ?, ?, ?)";
+
     }
 
     public static ResultSet selectIdStudentLesson(Statement stmt, String idStudent) throws SQLException  {
