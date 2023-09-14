@@ -100,6 +100,7 @@ public class LessonDAOCSV implements LessonDAO {
     @Override
     public synchronized void saveLesson(Lesson instance) throws IOException {
         // create csvWriter object passing file reader as a parameter
+
         CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fd, true)));
 
 
@@ -113,11 +114,11 @@ public class LessonDAOCSV implements LessonDAO {
             record[LessonAttributesOrder.ID_TEACHER] = instance.getIdTeacher();
             record[LessonAttributesOrder.TEACHER] = instance.getTeacher();
             record[LessonAttributesOrder.CLASSROOM] = instance.getClassroom();
-
-
-        } finally {
             csvWriter.writeNext(record);
             csvWriter.flush();
+
+        } finally {
+
             csvWriter.close();
         }
 
