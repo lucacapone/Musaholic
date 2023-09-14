@@ -104,6 +104,9 @@ System.out.println(e);
         } catch (IOException | ClassNotFoundException e) {
             throw new SQLException();
         }
+        finally {
+            pstmt.close();
+        }
     }
 
     /*
