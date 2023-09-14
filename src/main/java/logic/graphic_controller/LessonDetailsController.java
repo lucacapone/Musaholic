@@ -148,6 +148,7 @@ public class LessonDetailsController {
                 stage.show();
             } catch (SyntaxBeanException ex) {
                 //gestione grafica  errore di sintassi input
+
                 outLabel.setText("Syntax error : retry...");
             } catch (DAOException ex) {
                 //gestione grafica del caso di lezione non trovata
