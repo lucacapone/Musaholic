@@ -27,9 +27,9 @@ public class LessonDAOCSV implements LessonDAO {
         if (!fd.exists()) {
             boolean a = fd.createNewFile();
             if (!a) {
-                {
+
                     throw new IOException();
-                }
+
             }
 
         }
