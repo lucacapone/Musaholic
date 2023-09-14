@@ -8,6 +8,10 @@ import java .sql.*;
 
 public class Queries {
 
+    private Queries() {
+        throw new IllegalStateException("Utility class");
+    }
+
     static final String INSERT = "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?,? , ?, ?, ?, ?, ?, ?)";
 
     public static String insertLesson()  {
