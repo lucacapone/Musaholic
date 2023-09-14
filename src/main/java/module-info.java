@@ -9,5 +9,5 @@ module logic {
 
     opens logic.graphic_controller to javafx.fxml;
     exports logic.graphic_controller;
-    //opens logic.graphic_controller to javafx.fxml;
+
 }
