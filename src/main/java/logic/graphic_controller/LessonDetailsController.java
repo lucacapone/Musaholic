@@ -189,6 +189,7 @@ public class LessonDetailsController {
         choiceBoxPrice.setOnAction(this::getPrice);
         choiceBoxTime.setOnAction(this::getTime);
         datePickerSchedule.setOnAction(this::getSchedule);
+        datePickerSchedule.setEditable(false);
         assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'lessonDetails.fxml'.";
         assert home != null : "fx:id=\"Home\" was not injected: check your FXML file 'lessonDetails.fxml'.";

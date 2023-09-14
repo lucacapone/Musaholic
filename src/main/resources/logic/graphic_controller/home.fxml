@@ -16,11 +16,12 @@
          <image>
             <Image url="@../../images/logo.png" />
          </image></ImageView>
-      <Button id="BookLessonButton" fx:id="bookLessonButton" layoutX="53.0" layoutY="203.0" mnemonicParsing="false" onAction="#startBookLesson" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Book Lesson" textFill="#fdfbfb" />
+      <Button id="bookLessonButton" fx:id="bookLessonButton" layoutX="53.0" layoutY="203.0" mnemonicParsing="false" onAction="#startBookLesson" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Book Lesson" textFill="#fdfbfb" />
       <Button id="MusicalInstrumentsButton" fx:id="musicalInstrumentsButton" layoutX="232.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="Musical Instruments" textFill="#fdfbfb" />
       <Button id="NewsButton" fx:id="newsButton" layoutX="404.0" layoutY="203.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="148.0" style="-fx-background-color: rgb(0,123,167)" text="News" textFill="#fdfbfb" />
       <Label layoutX="64.0" layoutY="140.0" text="choose what to do:" />
       <Label layoutX="62.0" layoutY="157.0" text="(click on it)" />
       <Label id="Profile" fx:id="profile" layoutX="524.0" layoutY="35.0" text="Profile" />
+      <Label id="resultLabel" fx:id="resultLabel" layoutX="222.0" layoutY="140.0" prefHeight="17.0" prefWidth="148.0" textFill="#39e00f" />
    </children>
 </Pane>

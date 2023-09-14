@@ -47,6 +47,8 @@ public class HomeController {
 
     @FXML // fx:id="ScheduleLessonButton"
     private Button bookLessonButton; // Value injected by FXMLLoader
+    @FXML // fx:id="resultLabel"
+    private Label resultLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="ScheduledLessons"
     private Label scheduledLessons; // Value injected by FXMLLoader
@@ -107,6 +109,7 @@ public class HomeController {
         assert newsButton != null : "fx:id=\"NewsButton\" was not injected: check your FXML file 'Untitled'.";
         assert profile != null : "fx:id=\"Profile\" was not injected: check your FXML file 'Untitled'.";
         assert bookLessonButton != null : "fx:id=\"BookLessonButton\" was not injected: check your FXML file 'Untitled'.";
+        assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file 'home.fxml'.";
         assert scheduledLessons != null : "fx:id=\"ScheduledLessons\" was not injected: check your FXML file 'Untitled'.";
 
     }
