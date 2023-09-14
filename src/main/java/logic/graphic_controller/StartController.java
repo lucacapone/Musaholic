@@ -9,6 +9,7 @@ import logic.graphic_controller.cli.HomeCLI;
 import logic.model.Session;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class StartController extends Application {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
 //LOGIN NOT IMPLEMENTED, SIMULATED SESSION
         Session session = Session.getInstance();

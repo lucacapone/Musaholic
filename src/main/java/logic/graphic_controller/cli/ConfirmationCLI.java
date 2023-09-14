@@ -25,7 +25,7 @@ public class ConfirmationCLI {
 
     }
 
-    public void start() {
+    public void start() throws SQLException {
         System.out.println("Confirm?\n1)yes\n2)no");
         Scanner scanner = new Scanner(System.in);
         boolean validInput=FALSE;

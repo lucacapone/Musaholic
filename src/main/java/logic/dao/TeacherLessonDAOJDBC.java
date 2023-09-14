@@ -5,6 +5,7 @@ import logic.dao.queries.Queries;
 import logic.exception.DAOException;
 import logic.model.TeacherLesson;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import java.util.List;
 public class TeacherLessonDAOJDBC implements TeacherLessonDAO {
 
     @Override
-    public List<TeacherLesson> retrieveTeacherLesson(String date, String musicalInstrument, int price, int time) throws SQLException, DAOException {
+    public List<TeacherLesson> retrieveTeacherLesson(String date, String musicalInstrument, int price, int time) throws SQLException, DAOException, IOException, ClassNotFoundException {
         Statement stmt;
         Connection conn = DbConnection.getConnection();
         List<TeacherLesson> listOfTeacherLesson = new ArrayList<TeacherLesson>();

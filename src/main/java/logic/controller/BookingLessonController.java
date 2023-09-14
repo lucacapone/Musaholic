@@ -43,7 +43,7 @@ public class BookingLessonController {
         this.lessonList = new ArrayList<>();
     }
 
-    public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException,DAOException {
+    public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException, DAOException, IOException, ClassNotFoundException {
         this.setDate(d);
         this.setPrice(p);
         this.setTime(t);
@@ -57,7 +57,7 @@ public class BookingLessonController {
         findTeacherLessons();
     }
 
-    private void findTeacherLessons() throws DAOException, SQLException {
+    private void findTeacherLessons() throws DAOException, SQLException, IOException, ClassNotFoundException {
         String date = lesson.getDate().toString();
         String musicalInstrument = lesson.getMusicalInstrument();
         int price = lesson.getPrice();

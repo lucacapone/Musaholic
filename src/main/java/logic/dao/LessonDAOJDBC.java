@@ -3,6 +3,7 @@ package logic.dao;
 
 import logic.model.Lesson;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class LessonDAOJDBC implements LessonDAO{
 
 
     @Override
-    public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws DAOException,SQLException {
+    public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws DAOException, SQLException, IOException, ClassNotFoundException {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = DbConnection.getConnection();
@@ -93,6 +94,8 @@ System.out.println(e);
             if (pstmt != null) {
                 pstmt.close();
             }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new SQLException();
         }
     }
 

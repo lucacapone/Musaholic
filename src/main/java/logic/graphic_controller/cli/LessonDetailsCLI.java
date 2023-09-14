@@ -8,6 +8,7 @@ import logic.controller.BookingLessonController;
 import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class LessonDetailsCLI {
 
 
 
-    public void start() {
+    public void start() throws SQLException {
         DateBean dateBean = new DateBean();
         MusicalInstrumentBean musicalInstrumentBean = new MusicalInstrumentBean();
         PriceBean priceBean = new PriceBean();
@@ -86,6 +87,8 @@ public class LessonDetailsCLI {
                 System.out.println("Error database connection!");
                 LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
                 lessonDetailsCLI.start();
+            } catch (IOException | ClassNotFoundException e) {
+                throw new SQLException();
             }
             (new LessonCLI(controller)).start();
         }

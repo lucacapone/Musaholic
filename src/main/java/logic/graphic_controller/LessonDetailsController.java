@@ -157,7 +157,7 @@ public class LessonDetailsController {
                 choiceBoxMusicalInstrument.setValue("");
                 choiceBoxPrice.setValue("");
                 choiceBoxTime.setValue("");
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 //gestione grafica del caso di errore nel db connessione
                 outLabel.setText("No connected to the Database!");
                 datePickerSchedule.setValue(null);

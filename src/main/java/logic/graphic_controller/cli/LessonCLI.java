@@ -4,6 +4,7 @@ import logic.bean.IndexChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.SyntaxBeanException;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class LessonCLI {
 
     public LessonCLI(BookingLessonController controller) {this.controller=controller;}
 
-    public void start() {
+    public void start() throws SQLException {
         System.out.println("Book Lesson / Chose Lesson:");
         Scanner scanner = new Scanner(System.in);
         List<String> listaStringhe = new ArrayList<>();
