@@ -56,11 +56,14 @@ public class LessonDAOCSV implements LessonDAO {
 
     private static synchronized List<Lesson> retrieveLessonByIdStudent(File fd, String idStudent) throws IOException, CsvValidationException, DAOException {
         // create csvReader object passing file reader as a parameter
-        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
-        String[] record;
 
+
+        CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
+
+                String[] record;
         List<Lesson> lessonList = new ArrayList<>();
 
+        try{
         while ((record = csvReader.readNext()) != null) {
             int posNum= LessonAttributesOrder.ID_STUDENT;
 
@@ -80,16 +83,17 @@ public class LessonDAOCSV implements LessonDAO {
                 Lesson lesson= new Lesson(is,d,mi,p,it,th,c,t);
                 lessonList.add(lesson);
             }
+        }  if (lessonList.isEmpty()) {
+                        DAOException e = new DAOException("No Lesson found matching with id student: " + idStudent);
+                        throw e;
+                    }}
+
+
+finally{
+            csvReader.close();
+            return lessonList;
         }
 
-        csvReader.close();
-
-        if (lessonList.isEmpty()) {
-            DAOException e = new DAOException("No Lesson found matching with id student: " + idStudent);
-            throw e;
-        }
-
-        return lessonList;
     }
 
 
