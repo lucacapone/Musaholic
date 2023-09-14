@@ -11,12 +11,13 @@ import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
 import logic.model.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
-import static logic.graphic_controller.StartController.ID;
+
 
 public class BookingLessonController {
     private Lesson lesson; //L'unica vera prenotazione che alla fine salverò
@@ -122,7 +123,21 @@ public class BookingLessonController {
     }
 
     public void saveLesson() throws DAOException, SQLException, CsvValidationException, IOException{
-        this.lesson.setIdStudent(ID);
+        String id="";
+        FileInputStream propsInput = new FileInputStream("src/main/resources/config.properties");
+        Properties prop = new Properties();
+        try{
+            prop.load(propsInput);
+            id=prop.getProperty("id");
+
+        }
+        catch (IOException e) {
+            System.out.println("Errore FIle");
+        }
+        finally {
+            propsInput.close();
+        }
+        this.lesson.setIdStudent(id);
         LessonDAOFactory factory  = new LessonDAOFactory();
         LessonDAO lessonDAO = factory.createLessonDAO();
         lessonDAO.saveLesson(lesson);

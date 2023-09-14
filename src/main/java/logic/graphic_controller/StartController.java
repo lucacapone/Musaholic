@@ -5,24 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import logic.dao.db_connection.DbConnection;
 import logic.graphic_controller.cli.HomeCLI;
-import logic.model.Session;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class StartController extends Application {
 
     public static final String MUSAHOLIC = "Musaholic";
-    public static String ID="";
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
@@ -38,6 +33,9 @@ public class StartController extends Application {
     public static void main(String[] args) throws SQLException, IOException {
 
 //LOGIN NOT IMPLEMENTED, SIMULATED SESSION
+        //il caso duso login ha la responsabilità di scrivere su questo file i dati utente
+
+
         String name="";
         String surname="";
         String role="";
@@ -52,7 +50,7 @@ public class StartController extends Application {
             role=prop.getProperty("role");
             id=prop.getProperty("id");
             email=prop.getProperty("email");
-            ID = id;
+
         }
         catch (IOException e) {
           System.out.println("Errore FIle");
@@ -60,17 +58,12 @@ public class StartController extends Application {
         finally {
             propsInput.close();
         }
-        Session session = new Session();
-        session.setEmail(email);
-        session.setId(id);
-        session.setName(name);
-        session.setRole(role);
-        session.setSurname(surname);
+
 
         boolean isCLI = getView();
 
         //meccanismo di scelta della grafica
-        if (Objects.equals(session.getRole(), "student")) {
+        if (Objects.equals(role, "student")) {
 
             if (isCLI) {
                 HomeCLI homeCLI = new HomeCLI();
