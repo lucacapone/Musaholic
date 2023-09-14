@@ -79,7 +79,7 @@ public class LessonDetailsCLI {
                 lessonDetailsCLI.start();
             } catch (DAOException ex) {
                 //gestione grafica del caso di lezione non trovata
-                System.out.println("Not found lesson: change th parameters");
+                System.out.println("Not found lesson: change the parameters");
                 LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
                 lessonDetailsCLI.start();
             } catch (SQLException ex) {
