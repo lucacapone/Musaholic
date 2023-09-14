@@ -38,7 +38,15 @@ public class BookingLessonController {
     }
 
     public BookingLessonController() {
-        this.lesson = new Lesson("",LocalDate.now(),"",-1,"","","",-1);
+        this.lesson = new Lesson();
+        lesson.setIdStudent("");
+        lesson.setDate(LocalDate.now());
+        lesson.setMusicalInstrument("");
+        lesson.setPrice(-1);
+        lesson.setIdTeacher("");
+        lesson.setTeacher("");
+        lesson.setClassroom("");
+        lesson.setTime(-1);
         this.classroom = new FreeClassroom("");
         this.lessonList = new ArrayList<>();
     }

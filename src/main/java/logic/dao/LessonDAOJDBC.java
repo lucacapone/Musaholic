@@ -50,9 +50,16 @@ public class LessonDAOJDBC implements LessonDAO{
                 String classroom = rs.getString("classroom");
                 int time = rs.getInt("time");
 
-                Lesson l1 = new Lesson(idStudent,date, musicalInstrument, price, idTeacher, teacher, classroom,time);
-
-                listOfLesson.add(l1);
+                Lesson lesson = new Lesson();
+                lesson.setIdStudent(idStudent);
+                lesson.setDate(date);
+                lesson.setMusicalInstrument(musicalInstrument);
+                lesson.setPrice(price);
+                lesson.setIdTeacher(idTeacher);
+                lesson.setTeacher(teacher);
+                lesson.setClassroom(classroom);
+                lesson.setTime(time);
+                listOfLesson.add(lesson);
 
 
             }while(rs.next());

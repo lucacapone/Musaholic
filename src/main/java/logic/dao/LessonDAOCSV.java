@@ -77,10 +77,15 @@ public class LessonDAOCSV implements LessonDAO {
                 String it = record[LessonAttributesOrder.ID_TEACHER];
                 String th = record[LessonAttributesOrder.TEACHER];
                 String c = record[LessonAttributesOrder.CLASSROOM];
-
-
-
-                Lesson lesson= new Lesson(is,d,mi,p,it,th,c,t);
+                Lesson lesson= new Lesson();
+                lesson.setIdStudent(is);
+                lesson.setDate(d);
+                lesson.setMusicalInstrument(mi);
+                lesson.setPrice(p);
+                lesson.setIdTeacher(it);
+                lesson.setTeacher(th);
+                lesson.setClassroom(c);
+                lesson.setTime(t);
                 lessonList.add(lesson);
             }
         }  if (lessonList.isEmpty()) {

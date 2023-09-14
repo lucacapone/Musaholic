@@ -11,19 +11,6 @@ public class Lesson {
     private String teacher;
     private String classroom;
     private int time;
-
-    public Lesson(String idStudent, LocalDate date, String musicalInstrument, int price, String idTeacher, String teacher, String classroom, int time) {
-        this.idStudent = idStudent;
-        this.date = date;
-        this.musicalInstrument = musicalInstrument;
-        this.price = price;
-        this.idTeacher = idTeacher;
-        this.teacher = teacher;
-        this.classroom = classroom;
-        this.time = time;
-    }
-
-
     public String getIdStudent() {
 
         return idStudent;
