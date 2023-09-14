@@ -96,7 +96,6 @@ public class LessonDAOJDBC implements LessonDAO{
 
         }
         catch (SQLException e) {
-System.out.println(e);
             // STEP 5.2: Clean-up dell'ambiente
             if (pstmt != null) {
                 pstmt.close();
@@ -105,6 +104,7 @@ System.out.println(e);
             throw new SQLException();
         }
         finally {
+            assert pstmt != null;
             pstmt.close();
         }
     }
