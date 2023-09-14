@@ -96,9 +96,8 @@ public class LessonDAOCSV implements LessonDAO {
 
 finally{
             csvReader.close();
-            return lessonList;
         }
-
+        return lessonList;
     }
 
 
