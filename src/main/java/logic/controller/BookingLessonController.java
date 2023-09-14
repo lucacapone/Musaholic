@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
+import static logic.graphic_controller.StartController.ID;
+
 public class BookingLessonController {
     private Lesson lesson; //L'unica vera prenotazione che alla fine salverò
     private  FreeClassroom classroom;
@@ -120,7 +122,7 @@ public class BookingLessonController {
     }
 
     public void saveLesson() throws DAOException, SQLException, CsvValidationException, IOException{
-        this.lesson.setIdStudent(Session.getInstance().getId());
+        this.lesson.setIdStudent(ID);
         LessonDAOFactory factory  = new LessonDAOFactory();
         LessonDAO lessonDAO = factory.createLessonDAO();
         lessonDAO.saveLesson(lesson);

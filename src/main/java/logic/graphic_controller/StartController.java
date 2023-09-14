@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class StartController extends Application {
 
     public static final String MUSAHOLIC = "Musaholic";
+    public static String ID="";
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
@@ -51,6 +52,7 @@ public class StartController extends Application {
             role=prop.getProperty("role");
             id=prop.getProperty("id");
             email=prop.getProperty("email");
+            ID = id;
         }
         catch (IOException e) {
           System.out.println("Errore FIle");
@@ -58,18 +60,7 @@ public class StartController extends Application {
         finally {
             propsInput.close();
         }
-
-
-
-
-
-
-
-
-
-
-
-        Session session = Session.getInstance();
+        Session session = new Session();
         session.setEmail(email);
         session.setId(id);
         session.setName(name);

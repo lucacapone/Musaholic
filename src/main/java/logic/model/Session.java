@@ -1,6 +1,6 @@
 package logic.model;
 
-//Singleton
+
 public class Session {
 
     private String id;
@@ -8,9 +8,9 @@ public class Session {
     private String surname;
     private String email;
     private String role;
-    private static Session instance;
 
-    private Session() {
+
+    public Session() {
         this.id = "";
         this.name = "";
         this.surname = "";
@@ -19,12 +19,6 @@ public class Session {
 
     }
 
-    public static synchronized Session getInstance() {
-        if (instance == null) {
-            instance = new Session();
-        }
-        return instance;
-    }
 
     public String getId() {
         return id;
