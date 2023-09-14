@@ -8,7 +8,7 @@ import java .sql.*;
 
 public class Queries {
 
-    public static String insertLesson(Lesson lesson) throws SQLException  {
+    public static String insertLesson() throws SQLException  {
         String sql = "INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?,? , ?, ?, ?, ?, ?, ?)";
         return sql;
     }

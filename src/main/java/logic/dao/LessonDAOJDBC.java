@@ -78,7 +78,8 @@ public class LessonDAOJDBC implements LessonDAO{
         PreparedStatement pstmt = null;
 
         try {
-            String query="INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query=Queries.insertLesson();
+                    //"INSERT INTO lesson (`idStudent`, `date`, `musicalInstrument`, `price`, `idTeacher`, `teacher`, `classroom`, `time`)  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = DbConnection.getConnection().prepareStatement(query);
 
             pstmt.setString(1, instance.getIdStudent());
