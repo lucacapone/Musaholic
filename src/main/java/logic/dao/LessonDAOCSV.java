@@ -114,8 +114,9 @@ public class LessonDAOCSV implements LessonDAO {
             record[LessonAttributesOrder.TEACHER] = instance.getTeacher();
             record[LessonAttributesOrder.CLASSROOM] = instance.getClassroom();
 
-            csvWriter.writeNext(record);
+
         } finally {
+            csvWriter.writeNext(record);
             csvWriter.flush();
             csvWriter.close();
         }
