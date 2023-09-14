@@ -79,22 +79,31 @@ public class LessonController {
 
     @FXML
     void goConfirmation(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("confirmation.fxml")));
+        if (checkSelected()) {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("confirmation.fxml")));
 
 
-        Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.setTitle(MUSAHOLIC);
-        if (loader.getController() instanceof ConfirmationController){
-            ConfirmationController nextGraphicController=loader.getController();
-            nextGraphicController.setController(controller);
-            nextGraphicController.setStatus(indexChoseBean,finalLesson);
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 600, 400);
+            stage.setScene(scene);
+            stage.setTitle(MUSAHOLIC);
+            if (loader.getController() instanceof ConfirmationController) {
+                ConfirmationController nextGraphicController = loader.getController();
+                nextGraphicController.setController(controller);
+                nextGraphicController.setStatus(indexChoseBean, finalLesson);
+            }
+
+            stage.show();
+        }
+        else {
+            resultLabel.setText("first select a lesson, please");
         }
 
-        stage.show();
+    }
 
+    private boolean checkSelected() {
+        return !Objects.equals(resultLabel.getText(), "") && !Objects.equals(resultLabel.getText(), "first select a lesson, please");
     }
 
 

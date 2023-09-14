@@ -37,6 +37,7 @@ public class DbConnection {
                 Class.forName(driverClassName);
                 conn = DriverManager.getConnection(dbUrl,user,password);
 
+
             }
             catch (ClassNotFoundException | SQLException | IOException e) {
                 Logger logger = Logger.getLogger(DbConnection.class.getName());

@@ -54,7 +54,7 @@ public class StartController extends Application {
     public static boolean getView(){
         LocalDate date = LocalDate.now();
         int number = date.getDayOfMonth()%2;
-        return number == 0;
+        return number == 1;
     }
 }
 
