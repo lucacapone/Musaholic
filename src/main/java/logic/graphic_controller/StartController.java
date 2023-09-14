@@ -35,21 +35,14 @@ public class StartController extends Application {
 //LOGIN NOT IMPLEMENTED, SIMULATED SESSION
         //il caso duso login ha la responsabilità di scrivere su questo file i dati utente
 
-
-        String name="";
-        String surname="";
         String role="";
-        String id="";
-        String email="";
         FileInputStream propsInput = new FileInputStream("src/main/resources/config.properties");
         Properties prop = new Properties();
         try{
             prop.load(propsInput);
-            name=prop.getProperty("name");
-            surname=prop.getProperty("surname");
+
             role=prop.getProperty("role");
-            id=prop.getProperty("id");
-            email=prop.getProperty("email");
+
 
         }
         catch (IOException e) {

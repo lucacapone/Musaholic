@@ -132,7 +132,7 @@ public class BookingLessonController {
 
         }
         catch (IOException e) {
-            System.out.println("Errore FIle");
+            throw new IOException();
         }
         finally {
             propsInput.close();
