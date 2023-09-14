@@ -57,23 +57,23 @@ public class LessonDAOCSV implements LessonDAO {
 
         CSVReader csvReader = new CSVReader(new BufferedReader(new FileReader(fd)));
 
-        String[] record;
+        String[] myrecord;
         List<Lesson> lessonList = new ArrayList<>();
 
         try {
-            while ((record = csvReader.readNext()) != null) {
+            while ((myrecord = csvReader.readNext()) != null) {
                 int posNum = LessonAttributesOrder.ID_STUDENT;
 
-                boolean recordFound = record[posNum].equals(idStudent);
+                boolean recordFound = myrecord[posNum].equals(idStudent);
                 if (recordFound) {
-                    String is = record[LessonAttributesOrder.ID_STUDENT];
-                    LocalDate d = LocalDate.parse(record[LessonAttributesOrder.DATE]);
-                    int t = Integer.parseInt(record[LessonAttributesOrder.TIME]);
-                    String mi = record[LessonAttributesOrder.MUSICAL_INSTRUMENT];
-                    int p = Integer.parseInt(record[LessonAttributesOrder.PRICE]);
-                    String it = record[LessonAttributesOrder.ID_TEACHER];
-                    String th = record[LessonAttributesOrder.TEACHER];
-                    String c = record[LessonAttributesOrder.CLASSROOM];
+                    String is = myrecord[LessonAttributesOrder.ID_STUDENT];
+                    LocalDate d = LocalDate.parse(myrecord[LessonAttributesOrder.DATE]);
+                    int t = Integer.parseInt(myrecord[LessonAttributesOrder.TIME]);
+                    String mi = myrecord[LessonAttributesOrder.MUSICAL_INSTRUMENT];
+                    int p = Integer.parseInt(myrecord[LessonAttributesOrder.PRICE]);
+                    String it = myrecord[LessonAttributesOrder.ID_TEACHER];
+                    String th = myrecord[LessonAttributesOrder.TEACHER];
+                    String c = myrecord[LessonAttributesOrder.CLASSROOM];
                     Lesson lesson = new Lesson();
                     lesson.setIdStudent(is);
                     lesson.setDate(d);
