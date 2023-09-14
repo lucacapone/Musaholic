@@ -87,8 +87,8 @@ public class LessonDAOCSV implements LessonDAO {
                 }
             }
             if (lessonList.isEmpty()) {
-                DAOException e = new DAOException("No Lesson found matching with id student: " + idStudent);
-                throw e;
+                throw new DAOException("No Lesson found matching with id student: " + idStudent);
+
             }
         } finally {
             csvReader.close();

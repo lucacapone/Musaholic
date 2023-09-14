@@ -33,8 +33,7 @@ public class LessonDAOJDBC implements LessonDAO{
             // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
             ResultSet rs = Queries.selectIdStudentLesson(stmt,idStudent);
             if (!rs.first()){ // rs empty
-                DAOException e = new DAOException("No Lesson found matching with id student: "+ idStudent);
-                throw e;
+                throw  new DAOException("No Lesson found matching with id student: "+ idStudent);
             }
 
             // riposizionamento del cursore

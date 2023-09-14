@@ -28,8 +28,8 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO {
 
         ResultSet rs = Queries.selectTeacherLesson(stmt, date, musicalInstrument, price, time);
         if (!rs.first()) { // rs empty
-            DAOException e = new DAOException("No Lesson found matching with this lesson details");
-            throw e;
+            throw  new DAOException("No Lesson found matching with this lesson details");
+
         }
 
         // riposizionamento del cursore
