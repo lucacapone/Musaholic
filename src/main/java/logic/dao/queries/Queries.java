@@ -1,6 +1,6 @@
 package logic.dao.queries;
 
-import logic.model.Lesson;
+
 
 import java .sql.*;
 
