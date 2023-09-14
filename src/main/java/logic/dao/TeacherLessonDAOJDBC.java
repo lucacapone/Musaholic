@@ -55,22 +55,6 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO {
         return listOfTeacherLesson;
     }
 
-/*
-    public static void main(String[] args) throws Exception {
-
-        LocalDate date = LocalDate.of(2020, 1, 8);
-        TeacherLesson l1 = new TeacherLesson("011","giovanna rossi",date,"sax",25,11);
-        TeacherLessonDAOJDBC lcsv = new TeacherLessonDAOJDBC();
-
-        List<TeacherLesson> lessonList;
-        lessonList = lcsv.retrieveTeacherLesson(date.toString(),"sax",25,11);
-
-        for(int i=0;i<lessonList.size();i++){
-           System.out.println(lessonList.get(i).getAll());
-        }
-    }
-
- */
 
 
 }
