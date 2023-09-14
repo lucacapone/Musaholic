@@ -104,17 +104,17 @@ public class LessonDAOCSV implements LessonDAO {
         CSVWriter csvWriter = new CSVWriter(new BufferedWriter(new FileWriter(this.fd, true)));
 
 
-        String[] record = new String[8];
+        String[] myrecord = new String[8];
         try {
-            record[LessonAttributesOrder.ID_STUDENT] = instance.getIdStudent();
-            record[LessonAttributesOrder.DATE] = String.valueOf(instance.getDate());
-            record[LessonAttributesOrder.TIME] = String.valueOf(instance.getTime());
-            record[LessonAttributesOrder.MUSICAL_INSTRUMENT] = instance.getMusicalInstrument();
-            record[LessonAttributesOrder.PRICE] = String.valueOf(instance.getPrice());
-            record[LessonAttributesOrder.ID_TEACHER] = instance.getIdTeacher();
-            record[LessonAttributesOrder.TEACHER] = instance.getTeacher();
-            record[LessonAttributesOrder.CLASSROOM] = instance.getClassroom();
-            csvWriter.writeNext(record);
+            myrecord[LessonAttributesOrder.ID_STUDENT] = instance.getIdStudent();
+            myrecord[LessonAttributesOrder.DATE] = String.valueOf(instance.getDate());
+            myrecord[LessonAttributesOrder.TIME] = String.valueOf(instance.getTime());
+            myrecord[LessonAttributesOrder.MUSICAL_INSTRUMENT] = instance.getMusicalInstrument();
+            myrecord[LessonAttributesOrder.PRICE] = String.valueOf(instance.getPrice());
+            myrecord[LessonAttributesOrder.ID_TEACHER] = instance.getIdTeacher();
+            myrecord[LessonAttributesOrder.TEACHER] = instance.getTeacher();
+            myrecord[LessonAttributesOrder.CLASSROOM] = instance.getClassroom();
+            csvWriter.writeNext(myrecord);
             csvWriter.flush();
 
         } finally {
