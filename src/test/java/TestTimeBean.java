@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
         TimeBean timeBean = new TimeBean();
         try{
             timeBean.setTime("24");
+            assert(false);
         }
         catch (SyntaxBeanException ex){
             assert(true);
