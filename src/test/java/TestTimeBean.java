@@ -2,16 +2,16 @@ import logic.bean.TimeBean;
 import logic.exception.SyntaxBeanException;
 import org.junit.jupiter.api.Test;
 
- class TestTimeBean {
+import static org.junit.Assert.assertThrows;
+
+class TestTimeBean {
     @Test
      void testSetTimeOutOfRange(){
         TimeBean timeBean = new TimeBean();
-        try{
+
+        // Verifica che impostare il tempo su "24" generi un'eccezione SyntaxBeanException
+        assertThrows(SyntaxBeanException.class, () -> {
             timeBean.setTime("24");
-            assert(false);
-        }
-        catch (SyntaxBeanException ex){
-            assert(true);
-        }
+        });
     }
 }
