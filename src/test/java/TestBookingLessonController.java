@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestBookingLessonController {
+ class TestBookingLessonController {
 
     @Test
-    public void testCheckLessonDetails() {
+    void testCheckLessonDetails() {
 
         BookingLessonController bookingLessonController = new BookingLessonController();
         DateBean dateBean = new DateBean();

@@ -2,9 +2,9 @@ import logic.bean.TimeBean;
 import logic.exception.SyntaxBeanException;
 import org.junit.jupiter.api.Test;
 
-public class TestTimeBean {
+ class TestTimeBean {
     @Test
-    public void testSetTimeOutOfRange(){
+     void testSetTimeOutOfRange(){
         TimeBean timeBean = new TimeBean();
         try{
             timeBean.setTime("24");

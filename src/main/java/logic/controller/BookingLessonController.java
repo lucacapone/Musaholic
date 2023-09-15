@@ -89,7 +89,7 @@ public class BookingLessonController {
 
         ClassroomManageSystem classroomManageSystem = new ClassroomManageSystem();
         FreeClassroomBean freeClassroomBean = classroomManageSystem.findFreeClassroom(classroomAvailabilityBean);
-        if(freeClassroomBean.getClassroom()==""){
+        if(Objects.equals(freeClassroomBean.getClassroom(), "")){
             return false;
         }
         this.classroom.setClassroom(freeClassroomBean.getClassroom());
