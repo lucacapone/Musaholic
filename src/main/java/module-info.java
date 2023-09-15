@@ -9,4 +9,16 @@ module logic {
 
     opens logic.graphic_controller to javafx.fxml;
     exports logic.graphic_controller;
+    exports logic.bean;
+    exports logic.controller;
+    exports logic.exception;
+    exports logic.dao;
+    exports logic.model;
+    exports logic.boundary;
+
+
+
+
+
+
 }

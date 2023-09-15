@@ -7,6 +7,7 @@ import logic.boundary.ClassroomManageSystem;
 import logic.dao.LessonDAO;
 import logic.dao.TeacherLessonDAO;
 import logic.dao.TeacherLessonDAOJDBC;
+import logic.exception.ClassroomNotFoudException;
 import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
 import logic.model.*;
@@ -54,18 +55,22 @@ public class BookingLessonController {
         this.lessonList = new ArrayList<>();
     }
 
-    public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException, DAOException, IOException, ClassNotFoundException {
+    public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException, DAOException, IOException, ClassNotFoundException, ClassroomNotFoudException {
         this.setDate(d);
         this.setPrice(p);
         this.setTime(t);
         this.setMusicalInstrument(m);
 
         // Classroom Manage System : get free classroom
-        findFreeClassroom();
+        if (findFreeClassroom()){
+            // By DAO teacher : retrieveTeacherLesson
+            findTeacherLessons();
+        }
+        else{
+            throw new ClassroomNotFoudException("classroom not found");
+        }
 
-        // By DAO teacher : retrieveTeacherLesson
 
-        findTeacherLessons();
     }
 
     private void findTeacherLessons() throws DAOException, SQLException, IOException, ClassNotFoundException {
@@ -77,15 +82,19 @@ public class BookingLessonController {
         this.lessonList = teacherLessonDAO.retrieveTeacherLesson(date,musicalInstrument,price,time);
     }
 
-    private void findFreeClassroom() throws SyntaxBeanException {
+    private boolean findFreeClassroom() throws SyntaxBeanException {
         ClassroomAvailabilityBean classroomAvailabilityBean = new ClassroomAvailabilityBean();
         classroomAvailabilityBean.setDate(lesson.getDate().toString());
         classroomAvailabilityBean.setTime(Integer.toString(lesson.getTime()));
 
         ClassroomManageSystem classroomManageSystem = new ClassroomManageSystem();
         FreeClassroomBean freeClassroomBean = classroomManageSystem.findFreeClassroom(classroomAvailabilityBean);
+        if(freeClassroomBean.getClassroom()==""){
+            return false;
+        }
         this.classroom.setClassroom(freeClassroomBean.getClassroom());
         this.lesson.setClassroom(freeClassroomBean.getClassroom());
+        return true;
     }
 
     public boolean checkLessonDetails(DateBean dateBean, MusicalInstrumentBean musicalInstrumentBean, PriceBean priceBean, TimeBean timeBean){

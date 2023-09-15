@@ -17,6 +17,7 @@ import logic.bean.MusicalInstrumentBean;
 import logic.bean.PriceBean;
 import logic.bean.TimeBean;
 import logic.controller.BookingLessonController;
+import logic.exception.ClassroomNotFoudException;
 import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
 
@@ -164,6 +165,14 @@ public class LessonDetailsController {
                 choiceBoxMusicalInstrument.setValue("");
                 choiceBoxPrice.setValue("");
                 choiceBoxTime.setValue("");
+            } catch (ClassroomNotFoudException e) {
+                //gestione grafica del caso di errore nel clssroom not found
+                outLabel.setText("Classroom not found!");
+                datePickerSchedule.setValue(null);
+                choiceBoxPrice.setValue(" ");
+                choiceBoxTime.setValue(" ");
+                choiceBoxMusicalInstrument.setValue(" ");
+
             }
 
         } else {

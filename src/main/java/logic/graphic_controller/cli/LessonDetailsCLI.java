@@ -5,6 +5,7 @@ import logic.bean.MusicalInstrumentBean;
 import logic.bean.PriceBean;
 import logic.bean.TimeBean;
 import logic.controller.BookingLessonController;
+import logic.exception.ClassroomNotFoudException;
 import logic.exception.DAOException;
 import logic.exception.SyntaxBeanException;
 
@@ -89,6 +90,11 @@ public class LessonDetailsCLI {
                 lessonDetailsCLI.start();
             } catch (IOException | ClassNotFoundException e) {
                 throw new SQLException();
+            } catch (ClassroomNotFoudException e) {
+                //gestione grafica del caso di errore nel classroom not found
+                System.out.println("Error clssroom not found!");
+                LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
+                lessonDetailsCLI.start();
             }
             (new LessonCLI(controller)).start();
         }

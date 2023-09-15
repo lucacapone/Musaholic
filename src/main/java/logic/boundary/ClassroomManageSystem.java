@@ -24,6 +24,9 @@ public class ClassroomManageSystem {
         // Genera due numeri casuali tra 0 e 9
         int numero1 = t%10; // Genera un numero casuale tra 0 e 9
         int numero2 = d.getDayOfMonth()%10; // Genera un secondo numero casuale tra 0 e 9
+        if(d.getDayOfMonth()==25 && d.getMonthValue()==12){
+            return "";
+        }
 
         // Crea la stringa classe casuale
         return String.format("A%d%d", numero1, numero2);
