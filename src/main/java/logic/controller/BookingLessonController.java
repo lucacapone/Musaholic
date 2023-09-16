@@ -124,7 +124,7 @@ public class BookingLessonController {
         this.lesson.setTime(time);
     }
 
-    public  void setTeacherDetails(IndexChoseBean indexChoseBean) {
+    public  void setTeacherDetails(TeacherChoseBean indexChoseBean) {
         int index = Integer.parseInt(indexChoseBean.getIndex());
         this.lesson.setTeacher(lessonList.get(index).getName());
         this.lesson.setIdTeacher(lessonList.get(index).getIdTeacher());

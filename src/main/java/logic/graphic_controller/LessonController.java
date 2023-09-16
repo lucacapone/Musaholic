@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import logic.bean.IndexChoseBean;
+import logic.bean.TeacherChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.SyntaxBeanException;
 
@@ -33,7 +33,7 @@ public class LessonController {
 
     private String finalLesson;
 
-    private IndexChoseBean indexChoseBean;
+    private TeacherChoseBean indexChoseBean;
 
 
     public String getFinalLesson() {
@@ -161,7 +161,7 @@ public class LessonController {
         // mettere la stringa lesson
         resultLabel.setText(lessonListView.getSelectionModel().getSelectedItem());
         finalLesson = lessonListView.getSelectionModel().getSelectedItem();
-        IndexChoseBean index = new IndexChoseBean();
+        TeacherChoseBean index = new TeacherChoseBean();
         index.setIndex(String.valueOf(lessonListView.getSelectionModel().getSelectedIndex()));
         indexChoseBean = index;
     }

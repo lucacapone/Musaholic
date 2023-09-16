@@ -1,6 +1,6 @@
 package logic.graphic_controller.cli;
 
-import logic.bean.IndexChoseBean;
+import logic.bean.TeacherChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.SyntaxBeanException;
 
@@ -29,7 +29,7 @@ public class LessonCLI {
             System.out.println(i+" idTeacher:"+listaStringhe.get(i));
         }
         System.out.println("insert the index of the chosen lesson");
-        IndexChoseBean indexChoseBean = new IndexChoseBean();
+        TeacherChoseBean indexChoseBean = new TeacherChoseBean();
         try {
             indexChoseBean.setIndex(scanner.nextLine());
         }

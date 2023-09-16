@@ -4,7 +4,7 @@ import logic.exception.SyntaxBeanException;
 
 import java.io.Serializable;
 
-public class IndexChoseBean implements Serializable {
+public class TeacherChoseBean implements Serializable {
     private String index;
 
     public String getIndex() {

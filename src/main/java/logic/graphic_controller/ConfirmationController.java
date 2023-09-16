@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import logic.bean.IndexChoseBean;
+import logic.bean.TeacherChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.DAOException;
 
@@ -30,7 +30,7 @@ public class ConfirmationController {
         this.controller=controller;
     }
 
-    private IndexChoseBean indexChoseBean;
+    private TeacherChoseBean indexChoseBean;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -157,7 +157,7 @@ public class ConfirmationController {
         assert outLabel != null : "fx:id=\"outLabel\" was not injected: check your FXML file 'confirmation.fxml'.";
     }
 
-    public void setStatus(IndexChoseBean index, String finalLesson) {
+    public void setStatus(TeacherChoseBean index, String finalLesson) {
         finalLessonLabel.setText(finalLesson);
         this.indexChoseBean = index;
     }

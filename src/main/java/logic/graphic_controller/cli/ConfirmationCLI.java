@@ -1,7 +1,7 @@
 package logic.graphic_controller.cli;
 
 import com.opencsv.exceptions.CsvValidationException;
-import logic.bean.IndexChoseBean;
+import logic.bean.TeacherChoseBean;
 import logic.controller.BookingLessonController;
 import logic.exception.DAOException;
 
@@ -15,11 +15,11 @@ import static java.lang.Boolean.TRUE;
 public class ConfirmationCLI {
     BookingLessonController controller;
 
-    IndexChoseBean indexChoseBean;
+    TeacherChoseBean indexChoseBean;
 
 
 
-    public ConfirmationCLI(BookingLessonController controller, IndexChoseBean indexChoseBean) {
+    public ConfirmationCLI(BookingLessonController controller, TeacherChoseBean indexChoseBean) {
         this.controller=controller;
         this.indexChoseBean=indexChoseBean;
 
