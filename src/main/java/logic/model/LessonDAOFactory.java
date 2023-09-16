@@ -11,7 +11,7 @@ public class LessonDAOFactory {
     //PATTERN FACTORY
     public LessonDAO createLessonDAO() throws IOException {
         boolean isDb = getPersistence();
-        if (isDb) //GESTIRE MECCANISMO DI SCELTA DELLA MODALITA' DI PERSISTENZA
+        if (isDb) //MANAGE PERSISTENCE MODE CHOICE MECHANISM
         {
             return new LessonDAOJDBC();
         }

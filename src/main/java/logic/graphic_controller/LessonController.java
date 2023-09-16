@@ -27,8 +27,8 @@ public class LessonController {
 
     BookingLessonController controller;
 
-    public void setController(BookingLessonController controller){
-        this.controller=controller;
+    public void setController(BookingLessonController controller) {
+        this.controller = controller;
     }
 
     private String finalLesson;
@@ -79,6 +79,7 @@ public class LessonController {
 
     @FXML
     void goConfirmation(ActionEvent event) throws IOException {
+        //check that you have selected a lesson
         if (checkSelected()) {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("confirmation.fxml")));
 
@@ -91,17 +92,18 @@ public class LessonController {
             if (loader.getController() instanceof ConfirmationController) {
                 ConfirmationController nextGraphicController = loader.getController();
                 nextGraphicController.setController(controller);
+                //set the status of the next graphic
                 nextGraphicController.setStatus(indexChoseBean, finalLesson);
             }
 
             stage.show();
-        }
-        else {
+        } else {
             resultLabel.setText("first select a lesson, please");
         }
 
     }
 
+    //check that you have selected a lesson
     private boolean checkSelected() {
         return !Objects.equals(resultLabel.getText(), "") && !Objects.equals(resultLabel.getText(), "first select a lesson, please");
     }
@@ -112,23 +114,23 @@ public class LessonController {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
 
-
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
     }
+
     @FXML
     void goScheduledLessons(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("scheduledLessons.fxml")));
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
@@ -142,12 +144,12 @@ public class LessonController {
 
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
-        if (loader.getController() instanceof LessonDetailsController){
-            LessonDetailsController nextGraphicController=loader.getController();
+        if (loader.getController() instanceof LessonDetailsController) {
+            LessonDetailsController nextGraphicController = loader.getController();
             nextGraphicController.setController(controller);
         }
 
@@ -158,7 +160,7 @@ public class LessonController {
 
     @FXML
     void showLesson(MouseEvent event) throws SyntaxBeanException {
-        // mettere la stringa lesson
+        // put the lesson string in the label below and take the index of the chosen lesson from the list
         resultLabel.setText(lessonListView.getSelectionModel().getSelectedItem());
         finalLesson = lessonListView.getSelectionModel().getSelectedItem();
         TeacherChoseBean index = new TeacherChoseBean();
@@ -166,7 +168,8 @@ public class LessonController {
         indexChoseBean = index;
     }
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'mode.fxml'.";
         assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'mode.fxml'.";
@@ -180,9 +183,10 @@ public class LessonController {
     }
 
     public void setSatus() {
+        //transform each teacher lesson into a string and pass it to the listview
         List<String> listaStringhe = new ArrayList<>();
         controller.getLessonList().forEach(obj -> {
-            String stringa = obj.getLesson()+"     classroom: "+controller.getClassroom().getClassroom();
+            String stringa = obj.getLesson() + "     classroom: " + controller.getClassroom().getClassroom();
             listaStringhe.add(stringa);
         });
         ObservableList<String> items = FXCollections.observableArrayList(listaStringhe);

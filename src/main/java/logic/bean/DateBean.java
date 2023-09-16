@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class DateBean implements Serializable {
 
-    private String date="";
+    private String date = "";
 
     public String getDate() {
         return date;
@@ -22,12 +22,13 @@ public class DateBean implements Serializable {
 
     private void syntaxCheck(String date) throws SyntaxBeanException {
         try {
-            if(Objects.equals(date, "null")){    throw new SyntaxBeanException("date error: input null") ;}
+            if (Objects.equals(date, "null")) {
+                throw new SyntaxBeanException("date error: input null");
+            }
             LocalDate.parse(date);
 
-        }
-        catch (DateTimeException exception ) {
-            throw new SyntaxBeanException("date error: input invalid") ;
+        } catch (DateTimeException exception) {
+            throw new SyntaxBeanException("date error: input invalid");
         }
     }
 }

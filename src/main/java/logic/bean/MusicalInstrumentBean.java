@@ -1,11 +1,12 @@
 package logic.bean;
 
 import logic.exception.SyntaxBeanException;
+
 import java.io.Serializable;
 
 public class MusicalInstrumentBean implements Serializable {
 
-    private String musicalInstrument="";
+    private String musicalInstrument = "";
 
     public String getMusicalInstrument() {
         return musicalInstrument;
@@ -17,7 +18,7 @@ public class MusicalInstrumentBean implements Serializable {
     }
 
     private void syntaxCheck(String musicalInstrument) throws SyntaxBeanException {
-        if(musicalInstrument.length()==0 || musicalInstrument.length()>50){
+        if (musicalInstrument.length() == 0 || musicalInstrument.length() > 50) {
             throw new SyntaxBeanException("Syntax error: musical instrument invalid");
         }
     }

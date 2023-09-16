@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class TimeBean implements Serializable {
 
-    private String time="";
+    private String time = "";
 
     public String getTime() {
         return time;
@@ -24,9 +24,8 @@ public class TimeBean implements Serializable {
             if (t < 0 || t > 23) {
                 throw new SyntaxBeanException("Syntax error in time");
             }
-        }
-        catch (NumberFormatException exception ) {
-            throw new SyntaxBeanException("number format error: input invalid") ;
+        } catch (NumberFormatException exception) {
+            throw new SyntaxBeanException("number format error: input invalid");
         }
     }
 }

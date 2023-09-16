@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,8 +27,8 @@ public class ConfirmationController {
 
     BookingLessonController controller;
 
-    public void setController(BookingLessonController controller){
-        this.controller=controller;
+    public void setController(BookingLessonController controller) {
+        this.controller = controller;
     }
 
     private TeacherChoseBean indexChoseBean;
@@ -71,29 +72,26 @@ public class ConfirmationController {
 
         try {
             controller.setTeacherDetails(indexChoseBean);
+            //save lesson
             controller.saveLesson();
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
             Parent root = loader.load();
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root,600,400);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 600, 400);
             stage.setScene(scene);
             stage.setTitle(MUSAHOLIC);
 
             stage.show();
-        }
-        catch(DAOException exception){
-            //gestione grafica del caso di lezione non trovata
+        } catch (DAOException exception) {
+            //Graphic management of the case of an unsaved lesson
             outLabel.setText("No lesson saved : sorry, try again later");
-        }
-        catch(SQLException s){
-            //gestione grafica del caso di errore nel db connessione
+        } catch (SQLException s) {
+            //Graphical management of error cases in the connection databa
             outLabel.setText("No connected to the Database!");
         }
 
     }
-
-
 
 
     @FXML
@@ -101,21 +99,22 @@ public class ConfirmationController {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
     }
+
     @FXML
     void goScheduledLessons(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("scheduledLessons.fxml")));
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
@@ -125,26 +124,26 @@ public class ConfirmationController {
 
     @FXML
     void goLesson(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 600, 400);
-            stage.setScene(scene);
-            stage.setTitle("Forza Roma");
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
+        stage.setScene(scene);
+        stage.setTitle("Forza Roma");
 
-        if (loader.getController() instanceof LessonController){
-            LessonController nextGraphicController=loader.getController();
+        if (loader.getController() instanceof LessonController) {
+            LessonController nextGraphicController = loader.getController();
             nextGraphicController.setController(controller);
             nextGraphicController.setSatus();
         }
 
-            stage.show();
-
+        stage.show();
 
 
     }
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'confirmation.fxml'.";
         assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'confirmation.fxml'.";
@@ -158,6 +157,7 @@ public class ConfirmationController {
     }
 
     public void setStatus(TeacherChoseBean index, String finalLesson) {
+        //set the final lesson
         finalLessonLabel.setText(finalLesson);
         this.indexChoseBean = index;
     }

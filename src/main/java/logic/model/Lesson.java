@@ -11,6 +11,7 @@ public class Lesson {
     private String teacher;
     private String classroom;
     private int time;
+
     public String getIdStudent() {
 
         return idStudent;
@@ -51,7 +52,9 @@ public class Lesson {
         return time;
     }
 
-    public String getAll(){ return idStudent+"-"+date.toString()+"-"+musicalInstrument+"-"+price+"-"+idTeacher+"-"+teacher+"-"+classroom+"-"+time;}
+    public String getAll() {
+        return idStudent + "-" + date.toString() + "-" + musicalInstrument + "-" + price + "-" + idTeacher + "-" + teacher + "-" + classroom + "-" + time;
+    }
 
 
     public void setIdStudent(String idStudent) {

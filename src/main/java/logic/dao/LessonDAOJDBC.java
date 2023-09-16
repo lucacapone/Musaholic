@@ -13,63 +13,59 @@ import logic.exception.DAOException;
 import logic.dao.queries.Queries;
 import logic.dao.db_connection.DbConnection;
 
-public class LessonDAOJDBC implements LessonDAO{
+public class LessonDAOJDBC implements LessonDAO {
 
 
     @Override
     public List<Lesson> retrieveLessonByIdStudent(String idStudent) throws DAOException, SQLException, IOException, ClassNotFoundException {
-        // STEP 1: dichiarazioni
+
         Statement stmt = null;
         Connection conn = DbConnection.getConnection();
         List<Lesson> listOfLesson = new ArrayList<Lesson>();
 
 
+        stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
 
 
-            // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = Queries.selectIdStudentLesson(stmt, idStudent);
+        if (!rs.first()) { // rs empty
+            throw new DAOException("No Lesson found matching with id student: " + idStudent);
+        }
 
-            // In pratica i risultati delle query possono essere visti come un Array Associativo o un Map
-            ResultSet rs = Queries.selectIdStudentLesson(stmt,idStudent);
-            if (!rs.first()){ // rs empty
-                throw  new DAOException("No Lesson found matching with id student: "+ idStudent);
-            }
+        //repositioning the cursor
+        rs.first();
+        do {
 
-            // riposizionamento del cursore
-            rs.first();
-            do{
+            // reading the "by is student" columns
+            LocalDate date = rs.getDate("date").toLocalDate();
+            String musicalInstrument = rs.getString("musicalInstrument");
+            int price = rs.getInt("price");
+            String idTeacher = rs.getString("idTeacher");
+            String teacher = rs.getString("teacher");
+            String classroom = rs.getString("classroom");
+            int time = rs.getInt("time");
 
-                // lettura delle colonne "by is student"
-                LocalDate date = rs.getDate("date").toLocalDate();
-                String musicalInstrument = rs.getString("musicalInstrument");
-                int price =rs.getInt("price");
-                String idTeacher = rs.getString("idTeacher");
-                String teacher = rs.getString("teacher");
-                String classroom = rs.getString("classroom");
-                int time = rs.getInt("time");
-
-                Lesson lesson = new Lesson();
-                lesson.setIdStudent(idStudent);
-                lesson.setDate(date);
-                lesson.setMusicalInstrument(musicalInstrument);
-                lesson.setPrice(price);
-                lesson.setIdTeacher(idTeacher);
-                lesson.setTeacher(teacher);
-                lesson.setClassroom(classroom);
-                lesson.setTime(time);
-                listOfLesson.add(lesson);
+            Lesson lesson = new Lesson();
+            lesson.setIdStudent(idStudent);
+            lesson.setDate(date);
+            lesson.setMusicalInstrument(musicalInstrument);
+            lesson.setPrice(price);
+            lesson.setIdTeacher(idTeacher);
+            lesson.setTeacher(teacher);
+            lesson.setClassroom(classroom);
+            lesson.setTime(time);
+            listOfLesson.add(lesson);
 
 
-            }while(rs.next());
+        } while (rs.next());
 
-            // STEP 5.1: Clean-up dell'ambiente
-            rs.close();
+
+        rs.close();
 
 
         return listOfLesson;
     }
-
 
 
     @Override
@@ -77,11 +73,11 @@ public class LessonDAOJDBC implements LessonDAO{
         PreparedStatement pstmt = null;
 
         try {
-            String query=Queries.insertLesson();
-                   pstmt = DbConnection.getConnection().prepareStatement(query);
+            String query = Queries.insertLesson();
+            pstmt = DbConnection.getConnection().prepareStatement(query);
 
             pstmt.setString(1, instance.getIdStudent());
-            pstmt.setDate(2,Date.valueOf(instance.getDate())); //String.valueOf(instance.getDate())
+            pstmt.setDate(2, Date.valueOf(instance.getDate())); //String.valueOf(instance.getDate())
             pstmt.setString(3, instance.getMusicalInstrument());
             pstmt.setInt(4, instance.getPrice());
             pstmt.setString(5, instance.getIdTeacher());
@@ -92,22 +88,18 @@ public class LessonDAOJDBC implements LessonDAO{
             pstmt.executeUpdate();
 
 
+        } catch (SQLException e) {
 
-        }
-        catch (SQLException e) {
-            // STEP 5.2: Clean-up dell'ambiente
             if (pstmt != null) {
                 pstmt.close();
             }
         } catch (IOException | ClassNotFoundException e) {
             throw new SQLException();
-        }
-        finally {
+        } finally {
             assert pstmt != null;
             pstmt.close();
         }
     }
-
 
 
 }

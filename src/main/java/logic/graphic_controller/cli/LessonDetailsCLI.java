@@ -19,9 +19,9 @@ import static logic.graphic_controller.cli.HomeCLI.SYNTAX_ERROR;
 public class LessonDetailsCLI {
     BookingLessonController controller;
 
-    public LessonDetailsCLI(BookingLessonController controller) {this.controller=controller;
+    public LessonDetailsCLI(BookingLessonController controller) {
+        this.controller = controller;
     }
-
 
 
     public void start() throws SQLException {
@@ -34,8 +34,7 @@ public class LessonDetailsCLI {
 
         try {
             musicalInstrumentBean.setMusicalInstrument(scanner.nextLine());
-        }
-        catch (SyntaxBeanException exception){
+        } catch (SyntaxBeanException exception) {
             System.out.println(SYNTAX_ERROR);
             LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
             lessonDetailsCLI.start();
@@ -44,8 +43,7 @@ public class LessonDetailsCLI {
         System.out.println("2)Insert date: format(YYYY-MM-DD)");
         try {
             dateBean.setDate(scanner.nextLine());
-        }
-        catch (SyntaxBeanException exception){
+        } catch (SyntaxBeanException exception) {
             System.out.println(SYNTAX_ERROR);
             LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
             lessonDetailsCLI.start();
@@ -54,8 +52,7 @@ public class LessonDetailsCLI {
         System.out.println("3)Insert price");
         try {
             priceBean.setPrice(scanner.nextLine());
-        }
-        catch (SyntaxBeanException exception){
+        } catch (SyntaxBeanException exception) {
             System.out.println(SYNTAX_ERROR);
             LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
             lessonDetailsCLI.start();
@@ -64,34 +61,33 @@ public class LessonDetailsCLI {
         System.out.println("4)Insert time");
         try {
             timeBean.setTime(scanner.nextLine());
-        }
-        catch (SyntaxBeanException exception){
+        } catch (SyntaxBeanException exception) {
             System.out.println(SYNTAX_ERROR);
             LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
             lessonDetailsCLI.start();
         }
-        if (controller.checkLessonDetails(dateBean,musicalInstrumentBean,priceBean,timeBean)) {
+        if (controller.checkLessonDetails(dateBean, musicalInstrumentBean, priceBean, timeBean)) {
             try {
                 controller.setBooking(dateBean, musicalInstrumentBean, priceBean, timeBean);
             } catch (SyntaxBeanException ex) {
-                //gestione grafica  errore di sintassi input
+                //Graphical input syntax error management
                 System.out.println(SYNTAX_ERROR);
                 LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
                 lessonDetailsCLI.start();
             } catch (DAOException ex) {
-                //gestione grafica del caso di lezione non trovata
+                //Graphic management of the case of lesson not found
                 System.out.println("Not found lesson: change the parameters");
                 LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
                 lessonDetailsCLI.start();
             } catch (SQLException ex) {
-                //gestione grafica del caso di errore nel db connessione
+                //Graphical management of error cases in the connection database
                 System.out.println("Error database connection!");
                 LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
                 lessonDetailsCLI.start();
             } catch (IOException | ClassNotFoundException e) {
                 throw new SQLException();
             } catch (ClassroomNotFoudException e) {
-                //gestione grafica del caso di errore nel classroom not found
+                //Graphic management of the error case in the classroom not found
                 System.out.println("Error clssroom not found!");
                 LessonDetailsCLI lessonDetailsCLI = new LessonDetailsCLI(controller);
                 lessonDetailsCLI.start();

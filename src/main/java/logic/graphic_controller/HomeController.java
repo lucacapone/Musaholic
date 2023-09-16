@@ -56,18 +56,20 @@ public class HomeController {
 
     @FXML
     void startBookLesson(ActionEvent event) throws IOException {
-        BookingLessonController  controller = new BookingLessonController();
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 600, 400);
-            stage.setScene(scene);
-            stage.setTitle(MUSAHOLIC);
-            if (loader.getController() instanceof LessonDetailsController) {
-                LessonDetailsController nextGraphicController = loader.getController();
-                nextGraphicController.setController(controller);
-            }
-            stage.show();
+        // create controller of the use case
+        BookingLessonController controller = new BookingLessonController();
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lessonDetails.fxml")));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
+        stage.setScene(scene);
+        stage.setTitle(MUSAHOLIC);
+        if (loader.getController() instanceof LessonDetailsController) {
+            LessonDetailsController nextGraphicController = loader.getController();
+            //pass the controller
+            nextGraphicController.setController(controller);
+        }
+        stage.show();
 
     }
 
@@ -77,22 +79,23 @@ public class HomeController {
 
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
     }
+
     @FXML
     void goScheduledLessons(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("scheduledLessons.fxml")));
 
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
@@ -100,7 +103,8 @@ public class HomeController {
 
     }
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'Untitled'.";
         assert help != null : "fx:id=\"Help\" was not injected: check your FXML file 'Untitled'.";

@@ -21,9 +21,8 @@ public class TeacherChoseBean implements Serializable {
         try {
             Integer.parseInt(index);
 
-        }
-        catch (NumberFormatException exception ) {
-            throw new SyntaxBeanException("index format error: input invalid") ;
+        } catch (NumberFormatException exception) {
+            throw new SyntaxBeanException("index format error: input invalid");
         }
     }
 }

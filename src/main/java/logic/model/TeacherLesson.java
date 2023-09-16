@@ -69,7 +69,12 @@ public class TeacherLesson {
         this.time = time;
     }
 
-    public String getAll(){ return idTeacher+"-"+name+"-"+date.toString()+"-"+musicalInstrument+"-"+price+"-"+time;}
-    public String getLesson(){ return idTeacher+"   teacher:  "+name+"     price:   "+price+"€";}
+    public String getAll() {
+        return idTeacher + "-" + name + "-" + date.toString() + "-" + musicalInstrument + "-" + price + "-" + time;
+    }
+
+    public String getLesson() {
+        return idTeacher + "   teacher:  " + name + "     price:   " + price + "€";
+    }
 
 }

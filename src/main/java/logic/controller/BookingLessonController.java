@@ -19,10 +19,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-
 public class BookingLessonController {
-    private Lesson lesson; //L'unica vera prenotazione che alla fine salverò
-    private  FreeClassroom classroom;
+    private Lesson lesson; //The only real reservation I will ultimately save
+    private FreeClassroom classroom;
     private List<TeacherLesson> lessonList;
 
     public FreeClassroom getClassroom() {
@@ -56,17 +55,17 @@ public class BookingLessonController {
     }
 
     public void setBooking(DateBean d, MusicalInstrumentBean m, PriceBean p, TimeBean t) throws SyntaxBeanException, SQLException, DAOException, IOException, ClassNotFoundException, ClassroomNotFoudException {
+        // set Lesson Details
         this.setDate(d);
         this.setPrice(p);
         this.setTime(t);
         this.setMusicalInstrument(m);
 
         // Classroom Manage System : get free classroom
-        if (findFreeClassroom()){
+        if (findFreeClassroom()) {
             // By DAO teacher : retrieveTeacherLesson
             findTeacherLessons();
-        }
-        else{
+        } else {
             throw new ClassroomNotFoudException("classroom not found");
         }
 
@@ -78,8 +77,9 @@ public class BookingLessonController {
         String musicalInstrument = lesson.getMusicalInstrument();
         int price = lesson.getPrice();
         int time = lesson.getTime();
-        TeacherLessonDAO teacherLessonDAO = new TeacherLessonDAOJDBC(); //Questo codice va sostituito in caso di cambiamento di modalità di persistenza
-        this.lessonList = teacherLessonDAO.retrieveTeacherLesson(date,musicalInstrument,price,time);
+        TeacherLessonDAO teacherLessonDAO = new TeacherLessonDAOJDBC(); //This code must be replaced in case of change of persistence mode
+        //search in the database for the teacherLessons passing the chosen parameters
+        this.lessonList = teacherLessonDAO.retrieveTeacherLesson(date, musicalInstrument, price, time);
     }
 
     private boolean findFreeClassroom() throws SyntaxBeanException {
@@ -88,8 +88,9 @@ public class BookingLessonController {
         classroomAvailabilityBean.setTime(Integer.toString(lesson.getTime()));
 
         ClassroomManageSystem classroomManageSystem = new ClassroomManageSystem();
+        //ClassroomManageSystem returns a free classroom
         FreeClassroomBean freeClassroomBean = classroomManageSystem.findFreeClassroom(classroomAvailabilityBean);
-        if(Objects.equals(freeClassroomBean.getClassroom(), "")){
+        if (Objects.equals(freeClassroomBean.getClassroom(), "")) {
             return false;
         }
         this.classroom.setClassroom(freeClassroomBean.getClassroom());
@@ -97,13 +98,14 @@ public class BookingLessonController {
         return true;
     }
 
-    public boolean checkLessonDetails(DateBean dateBean, MusicalInstrumentBean musicalInstrumentBean, PriceBean priceBean, TimeBean timeBean){
+    //check that all lesson details have been entered
+    public boolean checkLessonDetails(DateBean dateBean, MusicalInstrumentBean musicalInstrumentBean, PriceBean priceBean, TimeBean timeBean) {
         String date = dateBean.getDate();
         String musicalInstrument = musicalInstrumentBean.getMusicalInstrument();
         String price = priceBean.getPrice();
         String time = timeBean.getTime();
-        Boolean alert= Objects.equals(date, "") || Objects.equals(musicalInstrument, "") || Objects.equals(price, "") || Objects.equals(time, "");
-    return !alert;
+        Boolean alert = Objects.equals(date, "") || Objects.equals(musicalInstrument, "") || Objects.equals(price, "") || Objects.equals(time, "");
+        return !alert;
     }
 
     private void setDate(DateBean dateBean) {
@@ -114,6 +116,7 @@ public class BookingLessonController {
     private void setMusicalInstrument(MusicalInstrumentBean musicalInstrumentBean) {
         this.lesson.setMusicalInstrument(musicalInstrumentBean.getMusicalInstrument());
     }
+
     private void setPrice(PriceBean priceBean) {
         int price = Integer.parseInt(priceBean.getPrice());
         this.lesson.setPrice(price);
@@ -124,30 +127,30 @@ public class BookingLessonController {
         this.lesson.setTime(time);
     }
 
-    public  void setTeacherDetails(TeacherChoseBean indexChoseBean) {
+    public void setTeacherDetails(TeacherChoseBean indexChoseBean) {
         int index = Integer.parseInt(indexChoseBean.getIndex());
         this.lesson.setTeacher(lessonList.get(index).getName());
         this.lesson.setIdTeacher(lessonList.get(index).getIdTeacher());
 
     }
 
-    public void saveLesson() throws DAOException, SQLException, CsvValidationException, IOException{
-        String id="";
+    public void saveLesson() throws DAOException, SQLException, CsvValidationException, IOException {
+        String id = "";
+        //get student id
         FileInputStream propsInput = new FileInputStream("src/main/resources/config.properties");
         Properties prop = new Properties();
-        try{
+        try {
             prop.load(propsInput);
-            id=prop.getProperty("id");
+            id = prop.getProperty("id");
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new IOException();
-        }
-        finally {
+        } finally {
             propsInput.close();
         }
         this.lesson.setIdStudent(id);
-        LessonDAOFactory factory  = new LessonDAOFactory();
+        LessonDAOFactory factory = new LessonDAOFactory();
+        //FACTORY create the DAO
         LessonDAO lessonDAO = factory.createLessonDAO();
         lessonDAO.saveLesson(lesson);
     }

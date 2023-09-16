@@ -28,11 +28,11 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO {
 
         ResultSet rs = Queries.selectTeacherLesson(stmt, date, musicalInstrument, price, time);
         if (!rs.first()) { // rs empty
-            throw  new DAOException("No Lesson found matching with this lesson details");
+            throw new DAOException("No Lesson found matching with this lesson details");
 
         }
 
-        // riposizionamento del cursore
+        //repositioning the cursor
         rs.first();
         do {
 
@@ -48,13 +48,12 @@ public class TeacherLessonDAOJDBC implements TeacherLessonDAO {
 
         } while (rs.next());
 
-        // Clean-up dell'ambiente
+
         rs.close();
 
 
         return listOfTeacherLesson;
     }
-
 
 
 }

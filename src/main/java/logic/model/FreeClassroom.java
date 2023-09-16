@@ -1,7 +1,6 @@
 package logic.model;
 
 
-
 public class FreeClassroom {
 
     private String classroom;

@@ -119,6 +119,7 @@ public class LessonDetailsController {
         PriceBean priceBean = new PriceBean();
         TimeBean timeBean = new TimeBean();
         try {
+            // take data from the date picker and choose box
             dateBean.setDate(String.valueOf(datePickerSchedule.getValue()));
             musicalInstrumentBean.setMusicalInstrument((choiceBoxMusicalInstrument.getValue()));
             priceBean.setPrice(choiceBoxPrice.getValue());
@@ -131,8 +132,10 @@ public class LessonDetailsController {
 
         }
 
+        // check that I have entered all the lesson details
         if (controller.checkLessonDetails(dateBean, musicalInstrumentBean, priceBean, timeBean)) {
             try {
+                //set lesson details, I'm looking for a free classroom and a list of teacher lessons
                 controller.setBooking(dateBean, musicalInstrumentBean, priceBean, timeBean);
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("lesson.fxml")));
                 Parent root = loader.load();
@@ -143,30 +146,32 @@ public class LessonDetailsController {
                 if (loader.getController() instanceof LessonController) {
                     LessonController nextGraphicController = loader.getController();
                     nextGraphicController.setController(controller);
+                    //set the status of the next graphic
                     nextGraphicController.setSatus();
                 }
 
                 stage.show();
             } catch (SyntaxBeanException ex) {
-                //gestione grafica  errore di sintassi input
+                //Graphical input syntax error management
 
                 outLabel.setText("Syntax error : retry...");
             } catch (DAOException ex) {
-                //gestione grafica del caso di lezione non trovata
+
+                //Graphic management of the case of lesson not found
                 outLabel.setText("No lesson found : change the parameters");
                 datePickerSchedule.setValue(null);
                 choiceBoxMusicalInstrument.setValue("");
                 choiceBoxPrice.setValue("");
                 choiceBoxTime.setValue("");
             } catch (SQLException | ClassNotFoundException ex) {
-                //gestione grafica del caso di errore nel db connessione
+                //Graphical management of error cases in the connection database
                 outLabel.setText("No connected to the Database!");
                 datePickerSchedule.setValue(null);
                 choiceBoxMusicalInstrument.setValue("");
                 choiceBoxPrice.setValue("");
                 choiceBoxTime.setValue("");
             } catch (ClassroomNotFoudException e) {
-                //gestione grafica del caso di errore nel clssroom not found
+                //Graphical management of the error case in clssroom not found
                 outLabel.setText("Classroom not found!");
                 datePickerSchedule.setValue(null);
                 choiceBoxPrice.setValue(" ");
@@ -176,6 +181,7 @@ public class LessonDetailsController {
             }
 
         } else {
+            //reset the parameters
             outLabel.setText("Insert all parameters please");
             datePickerSchedule.setValue(null);
             choiceBoxMusicalInstrument.setValue("");

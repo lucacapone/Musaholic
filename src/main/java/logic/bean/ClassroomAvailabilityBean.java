@@ -36,18 +36,16 @@ public class ClassroomAvailabilityBean implements Serializable {
             if (t < 0 || t > 23) {
                 throw new SyntaxBeanException("Syntax error in time");
             }
-        }
-        catch (NumberFormatException exception ) {
-            throw new SyntaxBeanException("number format error: input invalid") ;
+        } catch (NumberFormatException exception) {
+            throw new SyntaxBeanException("number format error: input invalid");
         }
     }
 
     private void dateSyntaxCheck(String date) throws SyntaxBeanException {
         try {
             LocalDate.parse(date);
-        }
-        catch (DateTimeException exception ) {
-            throw new SyntaxBeanException("date error: input invalid") ;
+        } catch (DateTimeException exception) {
+            throw new SyntaxBeanException("date error: input invalid");
         }
     }
 }

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,13 +32,13 @@ public class ScheduledLessonsController {
     private Label contacts; // Value injected by FXMLLoader
 
     @FXML // fx:id="DateLesson"
-    private TableColumn<Lesson,LocalDate> dateLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, LocalDate> dateLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="DistanceLesson"
-    private TableColumn<Lesson,String> distanceLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, String> distanceLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="DoneLesson"
-    private TableColumn<Lesson,Boolean> doneLesson; // Value injected by FXMLLoader
+    private TableColumn<Lesson, Boolean> doneLesson; // Value injected by FXMLLoader
 
     @FXML // fx:id="Help"
     private Label help; // Value injected by FXMLLoader
@@ -71,24 +72,24 @@ public class ScheduledLessonsController {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("home.fxml")));
 
 
-
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
         stage.show();
 
     }
+
     @FXML
     void goScheduledLessons(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("scheduledLessons.fxml")));
 
 
         Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root,600,400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.setTitle(MUSAHOLIC);
 
@@ -96,16 +97,17 @@ public class ScheduledLessonsController {
 
     }
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        numberLesson.setCellValueFactory(new PropertyValueFactory<Lesson,Integer>("number"));
-        modeLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("mode"));
-        dateLesson.setCellValueFactory(new PropertyValueFactory<Lesson,LocalDate>("date"));
-        musicalInstrumentLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("musicalInstrument"));
-        paymentLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("payment"));
-        distanceLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("distance"));
-        teacherLesson.setCellValueFactory(new PropertyValueFactory<Lesson,String>("teacher"));
-        doneLesson.setCellValueFactory(new PropertyValueFactory<Lesson,Boolean>("done"));
+        numberLesson.setCellValueFactory(new PropertyValueFactory<Lesson, Integer>("number"));
+        modeLesson.setCellValueFactory(new PropertyValueFactory<Lesson, String>("mode"));
+        dateLesson.setCellValueFactory(new PropertyValueFactory<Lesson, LocalDate>("date"));
+        musicalInstrumentLesson.setCellValueFactory(new PropertyValueFactory<Lesson, String>("musicalInstrument"));
+        paymentLesson.setCellValueFactory(new PropertyValueFactory<Lesson, String>("payment"));
+        distanceLesson.setCellValueFactory(new PropertyValueFactory<Lesson, String>("distance"));
+        teacherLesson.setCellValueFactory(new PropertyValueFactory<Lesson, String>("teacher"));
+        doneLesson.setCellValueFactory(new PropertyValueFactory<Lesson, Boolean>("done"));
         assert contacts != null : "fx:id=\"Contacts\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
         assert dateLesson != null : "fx:id=\"DateLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";
         assert distanceLesson != null : "fx:id=\"DistanceLesson\" was not injected: check your FXML file 'scheduledLessons.fxml'.";

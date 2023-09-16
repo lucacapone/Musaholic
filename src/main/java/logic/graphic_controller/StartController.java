@@ -33,29 +33,28 @@ public class StartController extends Application {
     public static void main(String[] args) throws SQLException, IOException {
 
 //LOGIN NOT IMPLEMENTED, SIMULATED SESSION
-        //il caso duso login ha la responsabilità di scrivere su questo file i dati utente
 
-        String role="";
+        //the login use case is responsible for writing user data to this file
+
+        String role = "";
         FileInputStream propsInput = new FileInputStream("src/main/resources/config.properties");
         Properties prop = new Properties();
-        try{
+        try {
             prop.load(propsInput);
 
-            role=prop.getProperty("role");
+            role = prop.getProperty("role");
 
 
-        }
-        catch (IOException e) {
-          System.out.println("Errore FIle");
-        }
-        finally {
+        } catch (IOException e) {
+            System.out.println("Errore FIle");
+        } finally {
             propsInput.close();
         }
 
 
         boolean isCLI = getView();
 
-        //meccanismo di scelta della grafica
+        //graphics choice mechanism
         if (Objects.equals(role, "student")) {
 
             if (isCLI) {
@@ -66,9 +65,11 @@ public class StartController extends Application {
             System.out.println("Teacher interface not impelemnented yet");
         }
     }
-    public static boolean getView(){
+
+    //graphics choice mechanism
+    public static boolean getView() {
         LocalDate date = LocalDate.now();
-        int number = date.getDayOfMonth()%2;
+        int number = date.getDayOfMonth() % 2;
         return number == 1;
     }
 }

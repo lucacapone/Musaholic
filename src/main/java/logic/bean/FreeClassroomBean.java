@@ -18,7 +18,7 @@ public class FreeClassroomBean implements Serializable {
     }
 
     private void syntaxCheck(String classroom) throws SyntaxBeanException {
-        if(classroom.length()==0 ){
+        if (classroom.length() == 0) {
             throw new SyntaxBeanException("Syntax error: classroom null");
         }
     }

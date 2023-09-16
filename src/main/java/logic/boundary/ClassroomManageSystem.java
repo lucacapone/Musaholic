@@ -3,6 +3,7 @@ package logic.boundary;
 import logic.bean.ClassroomAvailabilityBean;
 import logic.bean.FreeClassroomBean;
 import logic.exception.SyntaxBeanException;
+
 import java.time.LocalDate;
 
 public class ClassroomManageSystem {
@@ -12,7 +13,7 @@ public class ClassroomManageSystem {
         LocalDate date = LocalDate.parse(classroomAvailabilityBean.getDate());
         int time = Integer.parseInt(classroomAvailabilityBean.getTime());
         //simulate API
-        String classroom = getClassroom(date,time);
+        String classroom = getClassroom(date, time);
 
         FreeClassroomBean freeClassroomBean = new FreeClassroomBean();
         freeClassroomBean.setClassroom(classroom);
@@ -20,15 +21,15 @@ public class ClassroomManageSystem {
 
     }
 
-    public String getClassroom(LocalDate d,int t){
-        // Genera due numeri casuali tra 0 e 9
-        int numero1 = t%10; // Genera un numero casuale tra 0 e 9
-        int numero2 = d.getDayOfMonth()%10; // Genera un secondo numero casuale tra 0 e 9
-        if(d.getDayOfMonth()==25 && d.getMonthValue()==12){
+    public String getClassroom(LocalDate d, int t) {
+        //Generate two random numbers between 0 and 9
+        int numero1 = t % 10; // Generate a random numbers between 0 and 9
+        int numero2 = d.getDayOfMonth() % 10; //Generate a random numbers between 0 and 9
+        if (d.getDayOfMonth() == 25 && d.getMonthValue() == 12) {
             return "";
         }
 
-        // Crea la stringa classe casuale
+        // Create the random class string
         return String.format("A%d%d", numero1, numero2);
     }
 }
